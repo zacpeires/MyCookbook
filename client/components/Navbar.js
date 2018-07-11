@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Toolbar } from '../components'
 
 class Navbar extends Component {
   constructor() {
@@ -37,30 +38,7 @@ class Navbar extends Component {
             </div>
           </div>
         </div>
-        <div className="toolbar">
-          <div className="web-scrape">
-            <form autoComplete="off">
-              <input
-                type="text"
-                name="web-scrape"
-                className="web-scrape"
-                placeholder="  enter URL"
-              />
-              <button className="toolbar-btn" type="submit">Add recipe</button>
-            </form>
-          </div>
-          <div className="searchbar">
-            <form autoComplete="off">
-              <input
-                type="text"
-                name="search"
-                className="web-scrape"
-                placeholder="  Search recipes"
-              />
-              <button className="toolbar-btn" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
+        <Toolbar />
       </div>
     );
   }

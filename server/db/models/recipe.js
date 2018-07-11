@@ -21,8 +21,11 @@ const recipe = db.define('recipe', {
   instructions: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  type: {
+    type: Sequelize.STRING,
+    allowNull: false
   }
-
 })
 
 module.exports = recipe

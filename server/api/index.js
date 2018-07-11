@@ -3,6 +3,8 @@ module.exports = router
 
 
 router.use('/api/users', require('./users'));
+router.use('/api/cuisine', require('./cuisine'))
+router.use('/api/recipe', require('./recipe'))
 
 
 router.use(function (req, res, next) {
