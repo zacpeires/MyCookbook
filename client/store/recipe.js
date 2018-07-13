@@ -19,7 +19,7 @@ const initialRecipes = {
   scrapedRecipe: {}
 };
 
-export const gotRecipe = () => {
+export const gotRecipes = () => {
   return async dispatch => {
    const { data } = await axios.get('/api/recipes')
    dispatch(getRecipes(data))

@@ -1,11 +1,22 @@
 import React, { Component } from 'react'
 import { WebscrapedData } from './components'
+import { gotRecipes } from '../store/recipe'
+import { connect } from 'react-redux'
 
 class Routes extends Component {
   constructor(){
     super()
 
+    this.state = {
+      allRecipes: []
+    }
+  }
 
+  componentDidMount() {
+    const recipes = this.props.gotRecipes()
+    this.setState({
+      allRecipes: recipes
+    })
   }
 
 
@@ -20,4 +31,9 @@ class Routes extends Component {
   }
 }
 
-export default Routes
+
+const mapDispatchToProps = (dispatch) => ({
+  gotRecipes: () => dispatch(gotRecipes)
+})
+
+connect(null, mapDispatchToProps)(Routes)
