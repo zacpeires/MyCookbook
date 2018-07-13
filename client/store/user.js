@@ -10,8 +10,7 @@ const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 
 
-
-export default function(state = defaultUser, action) {
+export default (state = defaultUser, action) => {
   switch (action.type) {
     case GET_USER:
       return action.user

@@ -6,7 +6,7 @@ const recipe = db.define('recipe', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  url: {
+  details: {
     type: Sequelize.STRING,
     allowNull: false
   },
@@ -14,15 +14,19 @@ const recipe = db.define('recipe', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  nutrition: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  method: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   ingredients: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  instructions: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  type: {
+  url: {
     type: Sequelize.STRING,
     allowNull: false
   }

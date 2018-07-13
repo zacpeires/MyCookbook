@@ -1,11 +1,14 @@
-const User = require('./User')
+const User = require('./user')
 const Recipe = require('./recipe')
 const Cuisine = require('./cuisine')
+const Home = require('./home')
 
 User.belongsToMany(Recipe, {through: 'favourites'})
-Recipe.belongsToMany(User, {through: 'favourites'}) //could make a custom join table for favourites that increments
+Recipe.belongsToMany(User, {through: 'favourites'})
 Cuisine.hasMany(Recipe)
 Recipe.belongsTo(Cuisine)
+Home.hasMany(User)
+User.belongsTo(Home)
 
 
-module.exports = { User, Recipe }
+module.exports = { User, Recipe, Home }

@@ -1,11 +1,44 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Toolbar } from '../components'
+import { connect } from "react-redux"
+import { WebscrapedData} from '../components'
+import { scrapedRecipe } from "../store/recipe"
 
 class Navbar extends Component {
   constructor() {
     super();
+
+    this.state = {
+      webScrapeUrl: "",
+      search: "",
+      recipe: {}
+
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+
+
+  async handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state.webScrapeUrl)
+    const webRecipe = await this.props.scrapedRecipe({recipe: this.state.webScrapeUrl})
+    console.log(webRecipe)
+    this.setState({
+      recipe: webRecipe
+    })
+  }
+
+
 
   render() {
     return (
@@ -38,10 +71,20 @@ class Navbar extends Component {
             </div>
           </div>
         </div>
-        <Toolbar />
+        <Toolbar
+        handleChange={this.handleChange} handleSubmit={this.handleSubmit}
+        webScrapeUrl={this.state.webScrapeUrl} search={this.state.search} />
       </div>
     );
   }
 }
 
-export default Navbar;
+// const mapStateToProps = (state) => ({
+//   cuisine: state.cuisine
+// })
+
+const mapDispatchToProps = (dispatch) => ({
+  scrapedRecipe: (url) => dispatch(scrapedRecipe(url))
+})
+
+export default connect(null, mapDispatchToProps)(Navbar)
