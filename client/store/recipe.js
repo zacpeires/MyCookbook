@@ -29,7 +29,6 @@ export const gotRecipe = () => {
 export const scrapedRecipe = (url) => {
   return async dispatch => {
     const { data } = await axios.post('/api/recipes/external', url)
-    console.log(data)
     dispatch(scrapeRecipe(data))
   };
 };
@@ -39,7 +38,6 @@ export default (state = initialRecipes, action) => {
     case GET_RECIPE:
       return {...state, allRecipes: action.recipe}
     case SCRAPE_RECIPE:
-    console.log(action.recipe)
       return {...state, allRecipes: [...state.allRecipes, action.recipe], scrapedRecipe: action.recipe };
     default:
       return initialRecipes;

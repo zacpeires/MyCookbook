@@ -12,13 +12,15 @@ class Navbar extends Component {
     this.state = {
       webScrapeUrl: "",
       search: "",
-      recipe: {}
 
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderRecipe = this.renderRecipe.bind(this)
   }
+
+
 
   handleChange(event) {
     this.setState({
@@ -26,22 +28,23 @@ class Navbar extends Component {
     })
   }
 
-
-
   async handleSubmit(event) {
     event.preventDefault();
     console.log(this.state.webScrapeUrl)
-    const webRecipe = await this.props.scrapedRecipe({recipe: this.state.webScrapeUrl})
-    console.log(webRecipe)
-    this.setState({
-      recipe: webRecipe
-    })
+     const recipe = await this.props.scrapedRecipe({recipe: this.state.webScrapeUrl})
+
+     this.renderRecipe()
+  }
+
+  renderRecipe() {
+    console.log(this.props)
   }
 
 
-
   render() {
-    return (
+
+
+      return (
       <div>
         <div className="navbar">
           <Link to="/home">
@@ -51,7 +54,7 @@ class Navbar extends Component {
             <span>Dashboard</span>
           </Link>
           <div className="dropdown">
-            <button className="dropbtn">
+            <button type="submit" className="dropbtn">
               Recipes
               <i className="fa fa-caret-down" />
             </button>
@@ -79,12 +82,13 @@ class Navbar extends Component {
   }
 }
 
-// const mapStateToProps = (state) => ({
-//   cuisine: state.cuisine
-// })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   scrapedRecipe: (url) => dispatch(scrapedRecipe(url))
 })
 
-export default connect(null, mapDispatchToProps)(Navbar)
+const mapStateToProps = state => ({
+  recipe: state.recipe
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

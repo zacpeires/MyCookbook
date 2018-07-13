@@ -16,7 +16,7 @@ const scrapeBBC = async (url) => {
     const method = document.querySelector('.method__list').innerText
     const ingredients = document.getElementById('recipe-ingredients').innerText
 
-    return { name, details, description, nutrition, method, ingredients }
+    return { name, details, description, nutrition, method, ingredients}
   })
 
   await browser.close();

@@ -3,31 +3,31 @@ const db = require('../db')
 
 const recipe = db.define('recipe', {
   name: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(1234),
     allowNull: false
   },
   details: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING(1234),
+    allowNull: true
   },
   description: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING(1234),
+    allowNull: true
   },
   nutrition: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(1234),
     allowNull: false
   },
   method: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: false
   },
   ingredients: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(1234),
     allowNull: false
   },
   url: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(1234),
     allowNull: false
   }
 })
