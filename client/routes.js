@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { WebscrapedData } from './components'
-import { gotRecipes } from '../store/recipe'
+import { WebscrapedData, HomePage } from './components'
+import { gotRecipes } from './store/recipe'
+import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class Routes extends Component {
@@ -13,27 +14,37 @@ class Routes extends Component {
   }
 
   componentDidMount() {
-    const recipes = this.props.gotRecipes()
-    this.setState({
-      allRecipes: recipes
-    })
+    // const recipes = this.props.gotRecipes()
+    // console.log(this.props.recipe)
+
+    // this.setState({
+    //   allRecipes: recipes
+    // })
+
+    // console.log(this.state)
   }
+
+
+
 
 
   render() {
     return (
       <div>
-      {/* <Route path='/login' component={Login} />
-      <Route path='/home' component={Home} />
-      <Route path='/new-recipe' component={WebscrapedData} /> */}
+      {/* <Route path='/login' component={Login} /> */}
+      <Route path='/' component={HomePage} />
+      {/* <Route path='/new-recipe' component={WebscrapedData} />  */}
       </div>
     )
   }
 }
 
+const mapStateToProps = state => ({
+  recipe: state.recipe
+})
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   gotRecipes: () => dispatch(gotRecipes)
 })
 
-connect(null, mapDispatchToProps)(Routes)
+export default connect(mapStateToProps, mapDispatchToProps)(Routes)
