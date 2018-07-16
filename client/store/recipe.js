@@ -45,4 +45,3 @@ export default (state = initialRecipes, action) => {
   }
 };
 
-// const recipes = state.allRecipes.filter(recipe =>{ if (recipe.name !== action.recipe.name) return recipe })

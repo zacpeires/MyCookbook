@@ -76,7 +76,7 @@ a {
 }
 
 .toolbar {
-  background-color: lightgray;
+  background-color: lightsalmon;
   height: 35px;
   display: flex;
   justify-content: center;
@@ -160,4 +160,15 @@ a {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.login-logout {
+  float: right
+}
+
+.homepage-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(red, yellow);
 }

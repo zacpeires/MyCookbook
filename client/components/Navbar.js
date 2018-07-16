@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Toolbar } from '../components'
-import { connect } from "react-redux"
-import { WebscrapedData} from '../components'
-import { scrapedRecipe } from "../store/recipe"
+import { Toolbar } from "../components";
+import { connect } from "react-redux";
+import { WebscrapedData } from "../components";
+import { scrapedRecipe } from "../store/recipe";
 
 class Navbar extends Component {
   constructor() {
@@ -11,41 +11,37 @@ class Navbar extends Component {
 
     this.state = {
       webScrapeUrl: "",
-      search: "",
-
-    }
+      search: ""
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderRecipe = this.renderRecipe.bind(this)
+    this.renderRecipe = this.renderRecipe.bind(this);
   }
-
-
-
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
-    })
+    });
   }
 
   async handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.webScrapeUrl)
-     const recipe = await this.props.scrapedRecipe({recipe: this.state.webScrapeUrl})
+    console.log(this.state.webScrapeUrl);
+    const recipe = await this.props.scrapedRecipe({
+      recipe: this.state.webScrapeUrl
+    });
 
-     this.renderRecipe()
+    this.renderRecipe();
   }
 
   renderRecipe() {
-    console.log(this.props)
+    console.log(this.props);
+    // in here call function from WebscrapedData - use loading screen if recipe hasn't loaded
   }
 
-
   render() {
-
-
-      return (
+    return (
       <div>
         <div className="navbar">
           <Link to="/home">
@@ -53,6 +49,12 @@ class Navbar extends Component {
           </Link>
           <Link to="/user">
             <span>Dashboard</span>
+          </Link>
+          <Link to="/login" className="login-logout">
+            <span>Login</span>
+          </Link>
+          <Link to="/login" className="login-logout">
+          <span className="login-logout">Logout</span>
           </Link>
           <div className="dropdown">
             <button type="submit" className="dropbtn">
@@ -76,20 +78,25 @@ class Navbar extends Component {
           </div>
         </div>
         <Toolbar
-        handleChange={this.handleChange} handleSubmit={this.handleSubmit}
-        webScrapeUrl={this.state.webScrapeUrl} search={this.state.search} />
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          webScrapeUrl={this.state.webScrapeUrl}
+          search={this.state.search}
+        />
       </div>
     );
   }
 }
 
-
 const mapDispatchToProps = dispatch => ({
-  scrapedRecipe: (url) => dispatch(scrapedRecipe(url))
-})
+  scrapedRecipe: url => dispatch(scrapedRecipe(url))
+});
 
 const mapStateToProps = state => ({
   recipe: state.recipe
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Navbar);
