@@ -172,3 +172,16 @@ a {
   width: 100%;
   background: linear-gradient(red, yellow);
 }
+
+.loginpage-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 7%
+}
+
+.signin-form input {
+  width: 200px
+}
+.signup-form input {
+  width: 200px
+}

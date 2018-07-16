@@ -1,48 +1,55 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class Login extends Component {
   constructor() {
-    super()
+    super();
 
-      this.state = {
-        userName: '',
-        userLogin: ''
-      }
+    this.state = {
+      userName: "",
+      name: ""
+    };
 
-      this.handleChange = this.handleChange.bind(this)
-      this.handleSubmit = this.handleSubmit.bind(this)
-    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    handleSubmit() {
+  handleSubmit() {}
 
-    }
-
-    handleChange() {
-
-    }
+  handleChange() {}
 
   render() {
     return (
-      <div className="login-container">
-          <form autoComplete="off" onSubmit={this.props.handleSubmit}>
+      <div className="loginpage-container">
+        <div className="signin-form">
+          <form autoComplete="off" onSubmit={this.state.handleSubmit}>
             <input
               type="text"
-              name="webScrapeUrl"
-              value={this.props.webScrapeUrl}
-              onChange={this.props.handleChange}
+              name="userName"
+              value={this.state.userName}
+              onChange={this.handleChange}
+              placeholder="  Username or email address"
+            />
+            <button type="submit">Login</button>
+          </form>
+        </div>
+
+        <div className="signup-form">
+          <form autoComplete="off" onSubmit={this.state.handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
               placeholder="  enter URL"
             />
-            <button className="toolbar-btn" type="submit">
-              Add recipe
+            <button type="submit">
+              Sign up
             </button>
           </form>
-
-
-
+        </div>
       </div>
-    )
+    );
   }
 }
 
-
-export default Login
+export default Login;

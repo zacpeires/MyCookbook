@@ -25,7 +25,7 @@ class Routes extends Component {
     return (
       <div>
       <Route path='/login' component={Login} />
-      <Route path='/' component={HomePage} />
+      <Route   exact path='/' component={HomePage} />
       {/* <Route path='/new-recipe' component={WebscrapedData} />  */}
       </div>
     )
