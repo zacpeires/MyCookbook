@@ -14,14 +14,7 @@ class Routes extends Component {
   }
 
   componentDidMount() {
-    // const recipes = this.props.gotRecipes()
-    // console.log(this.props.recipe)
-
-    // this.setState({
-    //   allRecipes: recipes
-    // })
-
-    // console.log(this.state)
+  this.props.gotRecipes()
   }
 
 
@@ -44,7 +37,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  gotRecipes: () => dispatch(gotRecipes)
+  gotRecipes: () => dispatch(gotRecipes())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Routes)

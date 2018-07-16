@@ -21,7 +21,6 @@ const initialRecipes = {
 
 export const gotRecipes = () => {
   return async dispatch => {
-  console.log('testing')
    const { data } = await axios.get('/api/recipes')
    dispatch(getRecipes(data))
   }
@@ -38,10 +37,12 @@ export default (state = initialRecipes, action) => {
   switch (action.type) {
     case GET_RECIPE:
     console.log(state)
-      return {allRecipes: action.recipe}
+      return { ...state, allRecipes: action.recipe }
     case SCRAPE_RECIPE:
       return {...state, allRecipes: [...state.allRecipes, action.recipe], scrapedRecipe: action.recipe };
     default:
       return initialRecipes;
   }
 };
+
+// const recipes = state.allRecipes.filter(recipe =>{ if (recipe.name !== action.recipe.name) return recipe })

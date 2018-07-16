@@ -23,19 +23,11 @@ router.post('/external', async (req, res, next) => {
       scrapedRecipe = await scrapeBBC(req.body.recipe)
     }
 
-    const newRecipe = await Recipe.findOne({
-      where: {
-        url: req.body.recipe
-      }
-    })
+    console.log(scrapedRecipe)
 
-    if (!newRecipe) {
     const recipe = await Recipe.create({...scrapedRecipe, url: req.body.recipe})
 
     res.json(recipe)
-  } else {
-    next();
-  }
 
 
   } catch (error) {next(error)}
