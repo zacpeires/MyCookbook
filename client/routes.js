@@ -3,6 +3,8 @@ import { WebscrapedData, HomePage, Login } from './components'
 import { gotRecipes } from './store/recipe'
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router';
+
 
 class Routes extends Component {
   constructor(){
@@ -25,7 +27,8 @@ class Routes extends Component {
     return (
       <div>
       <Route path='/login' component={Login} />
-      <Route   exact path='/' component={HomePage} />
+      <Route exact path='/' component={HomePage} />
+      <Route exact path='/home' component={HomePage} />
       {/* <Route path='/new-recipe' component={WebscrapedData} />  */}
       </div>
     )
@@ -40,4 +43,4 @@ const mapDispatchToProps = dispatch => ({
   gotRecipes: () => dispatch(gotRecipes())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Routes)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Routes))
