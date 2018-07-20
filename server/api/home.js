@@ -2,10 +2,20 @@ const router = require('express').Router
 const { User, Home } = require('../db/models')
 module.exports = router
 
-// router.post('/', async (req, res, next) => {
-//   try {
+router.post('/add', async (req, res, next) => {
+  try {
 
-//     Home.setUser() // Home.addUser()
+    const user = await User.findOne({
+      email: req.body.email
+    })
 
-//   } catch(error) { next(error) }
-// })
+    const home = await Home.findOCreate({where: {
+      postCode: req.body.postCode}
+    })
+
+    await home[0].addUser(user)
+
+    res.json(home)
+
+  } catch(error) { next(error) }
+})

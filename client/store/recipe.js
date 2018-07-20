@@ -50,4 +50,8 @@ export default (state = initialRecipes, action) => {
 };
 
 
-// foodNetwork, BBCgoodFood, allRecipes
+/*
+Sites that I can scrape from: BBCgoodFood, FoodNetwork;
+Sites in progress: Allrecipes;
+Sites to do: Delicious magazine, Epicurious
+*/

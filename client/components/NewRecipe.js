@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class WebscrapedData extends Component {
+class NewRecipe extends Component {
   constructor() {
     super()
 
@@ -14,4 +14,4 @@ class WebscrapedData extends Component {
   }
 }
 
-export default WebscrapedData
+export default NewRecipe

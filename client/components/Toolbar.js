@@ -1,23 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 
 
+const Toolbar = props => {
 
-export default class Toolbar extends Component {
-  constructor() {
-    super();
-
-  }
-
-  render() {
     return (
       <div className="toolbar">
         <div className="web-scrape">
-          <form autoComplete="off" onSubmit={this.props.handleSubmit}>
+          <form autoComplete="off" onSubmit={props.handleSubmit}>
             <input
               type="text"
               name="webScrapeUrl"
-              value={this.props.webScrapeUrl}
-              onChange={this.props.handleChange}
+              value={props.webScrapeUrl}
+              onChange={props.handleChange}
               placeholder="  enter URL"
             />
             <button className="toolbar-btn" type="submit">
@@ -26,12 +20,12 @@ export default class Toolbar extends Component {
           </form>
         </div>
         <div className="searchbar">
-          <form autoComplete="off" onSubmit={this.props.handleSubmit}>
+          <form autoComplete="off" onSubmit={props.handleSubmit}>
             <input
               type="text"
               name="search"
-              value={this.props.search}
-              onChange={this.props.handleChange}
+              value={props.search}
+              onChange={props.handleChange}
               placeholder="  Search recipes"
             />
             <button className="toolbar-btn" type="submit">
@@ -42,6 +36,3 @@ export default class Toolbar extends Component {
       </div>
     );
   }
-}
-
-
