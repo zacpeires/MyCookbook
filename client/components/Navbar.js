@@ -16,7 +16,6 @@ class Navbar extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderRecipe = this.renderRecipe.bind(this);
   }
 
   handleChange(event) {
@@ -27,18 +26,20 @@ class Navbar extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.webScrapeUrl);
-    const recipe = await this.props.scrapedRecipe({
+
+    if (this.state.webScrapeUrl.length) {
+
+    await this.props.scrapedRecipe({
       recipe: this.state.webScrapeUrl
     });
 
-    this.renderRecipe();
+    this.setState({
+      webScrapeUrl: ''
+    })
   }
 
-  renderRecipe() {
-    console.log(this.props);
-    // in here call function from WebscrapedData - use loading screen if recipe hasn't loaded
   }
+
 
   render() {
     return (
@@ -88,9 +89,12 @@ class Navbar extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  scrapedRecipe: url => dispatch(scrapedRecipe(url))
-});
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const history = ownProps.history
+  return {
+  scrapedRecipe: url => dispatch(scrapedRecipe(url, history))
+  }
+}
 
 const mapStateToProps = state => ({
   recipe: state.recipe

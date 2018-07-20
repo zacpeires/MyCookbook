@@ -8,8 +8,10 @@ class WebscrapedData extends Component {
 
 
   render() {
-
-
-
+    return (
+      <div />
+    )
   }
 }
+
+export default WebscrapedData

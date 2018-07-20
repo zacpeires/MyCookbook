@@ -7,7 +7,6 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
 
-    console.log('testing')
     const recipes = await Recipe.findAll()
 
     res.json(recipes)

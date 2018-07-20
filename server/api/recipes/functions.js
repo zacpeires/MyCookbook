@@ -23,7 +23,6 @@ const scrapeBBC = async (url) => {
   return result
 
 
-
 }
 
 
