@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Recipe } = require('../../db/models')
-const { scrapeBBC, scrapeFoodNewtork } = require('./functions')
+const { scrapeBBC, scrapeFoodNewtork, scrapeAllRecipes } = require('./functions')
 
 module.exports = router
 
@@ -33,7 +33,11 @@ router.post('/external', async (req, res, next) => {
     } else if (req.body.recipe.includes('foodnetwork'))
     {
       scrapedRecipe = await scrapeFoodNewtork(req.body.recipe)
+
+    } else if (req.body.recipe.includes('allrecipes')) {
+      scrapedRecipe = await scrapeAllRecipes(req.body.recipe)
     }
+
 
     console.log(scrapedRecipe)
 
