@@ -29,20 +29,24 @@ export const gotRecipes = () => {
 export const scrapedRecipe = (url) => {
   return async dispatch => {
     const { data } = await axios.post('/api/recipes/external', url)
+    console.log(data)
     dispatch(scrapeRecipe(data))
-    history.push('/user-recipe')
+    history.push('/new-recipe')
   };
 };
 
 export default (state = initialRecipes, action) => {
   switch (action.type) {
     case GET_RECIPE:
-    console.log(state)
       return { ...state, allRecipes: action.recipe }
     case SCRAPE_RECIPE:
-      return {...state, allRecipes: [...state.allRecipes, action.recipe], scrapedRecipe: action.recipe };
+    const updatedRecipes = state.allRecipes.filter(recipe => {
+      return recipe.name !== action.recipe.name
+    })
+      return {...state, allRecipes: [...updatedRecipes, action.recipe], scrapedRecipe: action.recipe };
     default:
       return initialRecipes;
   }
 };
+
 

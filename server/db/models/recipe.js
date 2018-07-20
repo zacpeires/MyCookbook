@@ -16,19 +16,19 @@ const recipe = db.define('recipe', {
   },
   nutrition: {
     type: Sequelize.STRING(1234),
-    allowNull: false
+    allowNull: true
   },
   method: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: true
   },
   ingredients: {
     type: Sequelize.STRING(1234),
-    allowNull: false
+    allowNull: true
   },
   url: {
     type: Sequelize.STRING(1234),
-    allowNull: false
+    allowNull: true
   }
 })
 

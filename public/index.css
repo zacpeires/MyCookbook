@@ -173,14 +173,27 @@ a {
 }
 
 .loginpage-container {
+  margin-top: 7%;
+  margin-left: 14%;
+}
+
+.signin-form {
   display: flex;
-  justify-content: center;
-  margin-top: 7%
+  height: 30em;
+  width: 25em;
+  border: 2px solid black;
 }
 
 .signin-form input {
-  width: 200px
+  width: 200px;
+  justify-content: center;
 }
-.signup-form input {
-  width: 200px
+
+.signin-form button {
+  justify-content: center;
 }
+
+ul {
+  list-style: none;
+ }
+
