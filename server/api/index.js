@@ -3,7 +3,7 @@ module.exports = router
 
 
 router.use('/users', require('./users'));
-// router.use('/api/cuisines', require('./cuisine'))
+router.use('/api/cuisines', require('./cuisine'))
 router.use('/recipes', require('./recipes/recipe'))
 router.use('/home', require('./home'))
 

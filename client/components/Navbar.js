@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Toolbar } from "../components";
 import { connect } from "react-redux";
-import { WebscrapedData } from "../components";
 import { scrapedRecipe } from "../store/recipe";
 
 class Navbar extends Component {

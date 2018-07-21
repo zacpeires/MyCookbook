@@ -1,6 +1,8 @@
-const router = require('express').Router
+const router = require('express').Router()
 const { User, Home } = require('../db/models')
 module.exports = router
+
+
 
 router.post('/add', async (req, res, next) => {
   try {
@@ -19,3 +21,4 @@ router.post('/add', async (req, res, next) => {
 
   } catch(error) { next(error) }
 })
+

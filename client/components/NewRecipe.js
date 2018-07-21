@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class NewRecipe extends Component {
   constructor() {
@@ -14,4 +15,13 @@ class NewRecipe extends Component {
   }
 }
 
-export default NewRecipe
+
+const mapStateToProps = state => ({
+  recipe: state.recipe
+})
+
+const mapDispatchToProps = dispatch => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewRecipe)

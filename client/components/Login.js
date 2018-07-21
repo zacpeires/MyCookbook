@@ -7,7 +7,8 @@ class Login extends Component {
 
     this.state = {
       userName: "",
-      password: ""
+      password: "",
+      newUser: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,39 +28,31 @@ class Login extends Component {
   render() {
     return (
       <div className="loginpage-container">
-        <div className="signin-form">
+        <div className="login-form-parent">
           <form autoComplete="off" onSubmit={this.state.handleSubmit}>
-            <ul>
-              <li>
                 <input
                   type="text"
                   name="userName"
+                  className="login-input"
                   value={this.state.userName}
                   onChange={this.handleChange}
                   placeholder=" Username or email address"
                 />
-              </li>
-              <li>
                 <input
                   type="text"
                   name="password"
+                  className="login-input"
                   value={this.state.name}
                   onChange={this.handleChange}
                   placeholder="  Password"
                 />
-              </li>
-              <li>
                 <button type="submit">Login</button>
-              </li>
-            </ul>
           </form>
-          <div>
-            <Link to="/new-user">
+            <Link to="/new-user"  className="new-user">
             <span>
             New user? Create an account to get started
             </span>
             </Link>
-          </div>
         </div>
       </div>
     );
