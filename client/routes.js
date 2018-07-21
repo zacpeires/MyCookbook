@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NewRecipe, HomePage, Login } from './components'
+import { NewRecipe, HomePage, Login, SignUp } from './components'
 import { gotRecipes } from './store/recipe'
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -28,6 +28,7 @@ class Routes extends Component {
       <Route exact path='/' component={HomePage} />
       <Route exact path='/home' component={HomePage} />
       <Route path='/new-recipe' component={NewRecipe} />
+      <Route path='/new-user' component={SignUp} />
       </div>
     )
   }

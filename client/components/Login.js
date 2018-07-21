@@ -6,9 +6,8 @@ class Login extends Component {
     super();
 
     this.state = {
-      userName: "",
+      email: "",
       password: "",
-      newUser: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -29,14 +28,17 @@ class Login extends Component {
     return (
       <div className="loginpage-container">
         <div className="login-form-parent">
+          <div>
+          Sign in
+          </div>
           <form autoComplete="off" onSubmit={this.state.handleSubmit}>
                 <input
                   type="text"
-                  name="userName"
+                  name="email"
                   className="login-input"
                   value={this.state.userName}
                   onChange={this.handleChange}
-                  placeholder=" Username or email address"
+                  placeholder="Username or email address"
                 />
                 <input
                   type="text"
@@ -44,9 +46,9 @@ class Login extends Component {
                   className="login-input"
                   value={this.state.name}
                   onChange={this.handleChange}
-                  placeholder="  Password"
+                  placeholder="Password"
                 />
-                <button type="submit">Login</button>
+                <button type="submit" className="login-btn">Sign in</button>
           </form>
             <Link to="/new-user"  className="new-user">
             <span>
