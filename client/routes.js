@@ -28,7 +28,7 @@ class Routes extends Component {
       <Route exact path='/' component={HomePage} />
       <Route exact path='/home' component={HomePage} />
       <Route path='/new-recipe' component={NewRecipe} />
-      <Route path='/new-user' component={SignUp} />
+      <Route exact path='/new-user' component={SignUp} />
       </div>
     )
   }

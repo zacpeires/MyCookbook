@@ -4,20 +4,24 @@ module.exports = router;
 
 router.post("/", async (req, res, next) => {
   try {
-    const newUser = User.create({
+
+
+    const newUser = await User.create({
       name: req.body.name,
       password: req.body.password,
       email: req.body.email
     });
 
     if (req.body.postCode) {
-      const home = await Home.findOCreate({
+      let home = await Home.findOne({
         where: {
           postCode: req.body.postCode
         }
       });
-
-      await home[0].addUser(newUser);
+      if (!home) {
+       home = await Home.create({postCode: req.body.postCode})
+      }
+      await home.addUser(newUser);
     }
 
     res.json(newUser);
