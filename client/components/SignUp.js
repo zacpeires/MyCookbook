@@ -15,7 +15,6 @@ class SignUp extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.toggleAddressInput = this.toggleAddressInput.bind(this);
   }
 
   handleSubmit(event) {
@@ -43,16 +42,6 @@ class SignUp extends Component {
     console.log(this.state)
   }
 
-  toggleAddressInput() {
-    const checkbox = document.getElementById("home-checkbox");
-    const postCodeInput = document.querySelector(".postcode-input");
-
-    if (checkbox.checked == true) {
-      postCodeInput.style.display = "block";
-    } else {
-      postCodeInput.style.display = "none";
-    }
-  }
 
   render() {
     return (
@@ -85,22 +74,17 @@ class SignUp extends Component {
               placeholder="Password"
             />
             <span>
-              Tick the box below to create or register with a home account?
+              Fill in the box below to create or register with a home account:
             </span>
-            <input
-              id="home-checkbox"
-              type="checkbox"
-              onClick={this.toggleAddressInput}
-            />
             <input
               type="text"
               name="postCode"
               className="postcode-input"
               value={this.state.postCode}
               onChange={this.handleChange}
-              placeholder="Enter your Post Code "
+              placeholder="Enter your Postcode "
             />
-            <button type="submit" className="signup-btn">
+            <button type="submit" className="signup-btn" disabled={!this.state.email || !this.state.password || !this.state.name ? true : false}>
               Sign up
             </button>
           </form>
