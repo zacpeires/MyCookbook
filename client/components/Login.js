@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { login } from "../store"
+import { connect } from "react-redux"
 
 class Login extends Component {
   constructor() {
@@ -14,14 +16,25 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {}
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.login({
+      email: this.state.email,
+      password: this.state.password
+    })
+
+    this.setState({
+      email: '',
+      password: ''
+    })
+
+    console.log(event.target.value)
+  }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
-
-    console.log(this.state);
   }
 
   render() {
@@ -31,7 +44,7 @@ class Login extends Component {
           <div>
           Sign in
           </div>
-          <form autoComplete="off" onSubmit={this.state.handleSubmit}>
+          <form autoComplete="off" onSubmit={this.handleSubmit}>
                 <input
                   type="text"
                   name="email"
@@ -41,12 +54,13 @@ class Login extends Component {
                   placeholder="Username or email address"
                 />
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   className="login-input"
                   value={this.state.name}
                   onChange={this.handleChange}
                   placeholder="Password"
+                  autoComplete="new-password"
                 />
                 <button type="submit" className="login-btn">Sign in</button>
           </form>
@@ -61,4 +75,9 @@ class Login extends Component {
   }
 }
 
-export default Login;
+
+const mapDispatchToProps = (dispatch) => ({
+  login: (userDetails) => dispatch(login(userDetails))
+})
+
+export default connect(null, mapDispatchToProps)(Login)

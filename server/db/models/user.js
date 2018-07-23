@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const crypto = require('crupto')
+const crypto = require('crypto')
 const _ = require('lodash')
 const db = require('../db')
 
@@ -33,7 +33,7 @@ const User = db.define('user', {
 
 
 User.prototype.correctPassword = function (candidatePassword) {
-  return this.Model.encryptPassword(candidatePassword, this.salt) === this.password;
+  return User.encryptPassword(candidatePassword, this.salt) === this.password;
 };
 
 User.prototype.sanitize = function () {

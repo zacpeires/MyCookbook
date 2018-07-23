@@ -4,7 +4,7 @@ import { gotRecipes } from './store/recipe'
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router';
-
+import { me } from './store'
 
 class Routes extends Component {
   constructor(){
@@ -17,6 +17,7 @@ class Routes extends Component {
 
   componentDidMount() {
   this.props.gotRecipes()
+  this.props.userLoggedIn()
   }
 
 
@@ -24,7 +25,7 @@ class Routes extends Component {
   render() {
     return (
       <div>
-      <Route path='/login' component={Login} />
+      <Route exact path='/login' component={Login} />
       <Route exact path='/' component={HomePage} />
       <Route exact path='/home' component={HomePage} />
       <Route path='/new-recipe' component={NewRecipe} />
@@ -39,7 +40,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  gotRecipes: () => dispatch(gotRecipes())
+  gotRecipes: () => dispatch(gotRecipes()),
+  userLoggedIn: () => dispatch(me())
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Routes))

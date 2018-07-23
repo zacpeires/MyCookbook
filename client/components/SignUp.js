@@ -19,7 +19,6 @@ class SignUp extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('submitting')
 
     const { name, email, password, postCode } = this.state;
     this.props.createUser({
@@ -38,8 +37,6 @@ class SignUp extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-
-    console.log(this.state)
   }
 
 
@@ -72,6 +69,7 @@ class SignUp extends Component {
               value={this.state.password}
               onChange={this.handleChange}
               placeholder="Password"
+              autoComplete="new-password"
             />
             <span>
               Fill in the box below to create or register with a home account:
