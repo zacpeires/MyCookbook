@@ -21,8 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'myCookbook secret',
+  store: dbStore,
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: true
 }));
 
 

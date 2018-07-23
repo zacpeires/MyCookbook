@@ -27,8 +27,6 @@ class Login extends Component {
       email: '',
       password: ''
     })
-
-    console.log(event.target.value)
   }
 
   handleChange(event) {

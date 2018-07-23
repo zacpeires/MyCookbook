@@ -21,6 +21,7 @@ class Navbar extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
+
   }
 
   async handleSubmit(event) {
@@ -96,7 +97,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 const mapStateToProps = state => ({
-  recipe: state.recipe
+  recipe: state.recipe,
+  user: state.user
 });
 
 export default connect(
