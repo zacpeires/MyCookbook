@@ -30,7 +30,7 @@ export const scrapedRecipe = (url) => {
   return async dispatch => {
     const { data } = await axios.post('/api/recipes/external', url)
     console.log(data)
-    dispatch(scrapeRecipe(data))
+    dispatch(scrapeRecipe(data || initialRecipes.scrapedRecipe))
     history.push('/new-recipe')
   };
 };

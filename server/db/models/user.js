@@ -1,8 +1,10 @@
 const Sequelize = require('sequelize')
+const crypto = require('crupto')
+const _ = require('lodash')
 const db = require('../db')
 
 
-const user = db.define('user', {
+const User = db.define('user', {
   name: {
     type: Sequelize.STRING,
     allowNull: false
@@ -19,10 +21,47 @@ const user = db.define('user', {
       isEmail: true
   }
   },
+  salt: {
+    type: Sequelize.STRING
+  },
   admin: {
     type: Sequelize.BOOLEAN,
     allowNull: true
   }
 })
 
-module.exports = user
+
+
+User.prototype.correctPassword = function (candidatePassword) {
+  return this.Model.encryptPassword(candidatePassword, this.salt) === this.password;
+};
+
+User.prototype.sanitize = function () {
+  return _.omit(this.toJSON(), ['password', 'salt']);
+};
+
+User.generateSalt = () => {
+  return crypto.randomBytes(16).toString('base64');
+};
+
+User.encryptPassword = (plainText, salt) => {
+  const hash = crypto.createHash('sha1');
+  hash.update(plainText);
+  hash.update(salt);
+  return hash.digest('hex');
+};
+
+const setSaltAndPassword = (user) => {
+  if (user.changed('password')) {
+    user.salt = User.generateSalt()
+    user.password = User.encryptPassword(user.password, user.salt)
+  }
+}
+
+
+
+
+User.beforeCreate(setSaltAndPassword)
+User.beforeUpdate(setSaltAndPassword)
+
+module.exports = User

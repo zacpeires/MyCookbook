@@ -2,9 +2,14 @@ const router = require("express").Router();
 const { User, Home } = require("../db/models");
 module.exports = router;
 
-router.post("/", async (req, res, next) => {
-  try {
 
+router.get('/me', (req, res, next) => {
+  res.json(req.user);
+});
+
+
+router.post('/signup', async (req, res, next) => {
+  try {
 
     const newUser = await User.create({
       name: req.body.name,
@@ -30,6 +35,36 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+
+router.put('/login', (req, res, next) => {
+  User.findOne({
+    where: {
+      email: req.body.email
+    }
+  })
+    .then(user => {
+      if (!user) {
+        res.status(401).send('User not found')
+      } else if (!user.hasMatchingPassword(req.body.password)) {
+        res.status(401).send('Incorrect password');
+     } else {
+        req.login(user, err => {
+          if (err) next(err);
+          else res.json(user);
+        });
+      }
+    })
+    .catch(next);
+});
+
+
+router.delete('/logout', (req, res, next) => {
+  req.logout();
+  req.session.destroy()
+  res.sendStatus(204);
+});
+
+
 router.delete("/:userId", async (req, res, next) => {
   try {
     const user = req.params.userId;
@@ -38,3 +73,4 @@ router.delete("/:userId", async (req, res, next) => {
     next(error);
   }
 });
+

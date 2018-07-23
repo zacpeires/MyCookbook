@@ -1,7 +1,7 @@
 const Sequelize = require('Sequelize')
 const db = require('../db')
 
-const recipe = db.define('recipe', {
+const Recipe = db.define('recipe', {
   name: {
     type: Sequelize.STRING(1234),
     allowNull: false
@@ -32,4 +32,4 @@ const recipe = db.define('recipe', {
   }
 })
 
-module.exports = recipe
+module.exports = Recipe

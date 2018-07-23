@@ -11,13 +11,35 @@ const getUser = user => ({ type: GET_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
 const addUser = user => ({ type: ADD_USER, user });
 
-export const createUser = (userDetails) => {
+export const createUser = userDetails => {
   return async dispatch => {
-   const { data } = await axios.post('api/users/', userDetails)
+   const { data } = await axios.post('api/users/signup', userDetails)
    dispatch(addUser(data))
   }
 }
 
+export const me = () => {
+  return async dispatch => {
+    const { data } = await axios.get('/api/users/me')
+    dispatch(getUser(data || defaultUser))
+  }
+}
+
+export const login = (userData) => {
+  return async dispatch => {
+    const { data } = await axios.put('/login', userData)
+    dispatch(getUser(data))
+    history.push('/')
+  }
+}
+
+export const logout = () => {
+  return async dispatch => {
+    await axios.post('/api/users/logout')
+    dispatch(removeUser())
+    history.push('/login')
+  }
+}
 
 export default (state = defaultUser, action) => {
   switch (action.type) {

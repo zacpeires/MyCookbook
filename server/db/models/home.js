@@ -1,7 +1,7 @@
 const Sequelize = require('Sequelize')
 const db = require('../db')
 
-const home = db.define('home', {
+const Home = db.define('home', {
   postCode: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -12,4 +12,4 @@ const home = db.define('home', {
   }
 })
 
-module.exports = home
+module.exports = Home

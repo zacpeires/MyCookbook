@@ -2,13 +2,34 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const path = require('path')
+const session = require('express-session')
+const passport = require('passport');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const db = require('./db');
-
+const dbStore = new SequelizeStore({ db: db });
 const app = express()
+
+passport.serializeUser((user, done) => done(null, user.id))
+passport.deserializeUser((id, done) =>
+  db.models.user.findById(id)
+    .then(user => done(null, user))
+    .catch(done))
 
 app.use(morgan('dev'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'myCookbook secret',
+  resave: false,
+  saveUninitialized: false
+}));
+
+
+dbStore.sync();
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/api', require('./api'))
 
