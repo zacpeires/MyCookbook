@@ -128,6 +128,7 @@ a {
 }
 .loader {
   margin: 60px auto;
+  margin-top: 15.5%;
   background-color:lightcoral;
   font-size: 10px;
   position: relative;

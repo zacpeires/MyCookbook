@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Toolbar } from "../components";
 import { connect } from "react-redux";
-import { scrapedRecipe } from "../store/recipe";
+import { scrapedRecipe } from "../store";
 
 class Navbar extends Component {
   constructor() {
@@ -10,7 +10,8 @@ class Navbar extends Component {
 
     this.state = {
       webScrapeUrl: "",
-      search: ""
+      search: "",
+      showLoader: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,20 +29,24 @@ class Navbar extends Component {
     event.preventDefault();
 
     if (this.state.webScrapeUrl.length) {
+      this.setState({
+        showLoader: true
+      })
 
     await this.props.scrapedRecipe({
       recipe: this.state.webScrapeUrl
     });
 
     this.setState({
-      webScrapeUrl: ''
+      webScrapeUrl: '',
+      showLoader: false
     })
   }
-
   }
 
 
   render() {
+
     return (
       <div>
         <div className="navbar">
@@ -51,12 +56,14 @@ class Navbar extends Component {
           <Link to="/user">
             <span>Dashboard</span>
           </Link>
+          { !this.props.isLoggedIn ?
           <Link to="/login" className="login-logout">
             <span>Login</span>
-          </Link>
-          <Link to="/login" className="login-logout">
+          </Link> :
+          <Link to="/" className="login-logout">
           <span className="login-logout">Logout</span>
           </Link>
+          }
           <div className="dropdown">
             <button type="submit" className="dropbtn">
               Recipes
@@ -84,6 +91,10 @@ class Navbar extends Component {
           webScrapeUrl={this.state.webScrapeUrl}
           search={this.state.search}
         />
+        {this.state.showLoader ?
+        <div className="loader" /> :
+        <div />
+        }
       </div>
     );
   }
@@ -98,6 +109,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 const mapStateToProps = state => ({
   recipe: state.recipe,
+  isLoggedIn: !!state.user.id,
   user: state.user
 });
 

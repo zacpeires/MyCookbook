@@ -1,6 +1,6 @@
 export { default as Navbar } from './Navbar'
 export { default as Toolbar } from './Toolbar'
-export { default as NewRecipe } from './NewRecipe'
+export { default as SingleRecipe } from './SingleRecipe'
 export { default as HomePage } from './HomePage'
 export { default as Login } from './Login'
 export { default as SignUp} from './SignUp'

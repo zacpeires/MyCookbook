@@ -66,7 +66,7 @@ const scrapeAllRecipes = async (url) => {
 }
 
 
-const scrapeDeliciousFood = async (url) => {
+const scrapeDeliciousMagazine = async (url) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url);
@@ -87,4 +87,4 @@ const scrapeDeliciousFood = async (url) => {
 }
 
 
-module.exports = { scrapeBBC, scrapeFoodNewtork, scrapeAllRecipes, scrapeDeliciousFood }
+module.exports = { scrapeBBC, scrapeFoodNewtork, scrapeAllRecipes, scrapeDeliciousMagazine }

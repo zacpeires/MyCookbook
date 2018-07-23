@@ -26,7 +26,6 @@ app.use(session({
   saveUninitialized: true
 }));
 
-
 dbStore.sync();
 
 app.use(passport.initialize());
