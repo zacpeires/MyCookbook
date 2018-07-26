@@ -35,9 +35,8 @@ export const login = (userData) => {
 
 export const logout = () => {
   return async dispatch => {
-    await axios.post('/api/users/logout')
+    await axios.delete('/api/users/logout')
     dispatch(removeUser())
-    history.push('/login')
   }
 }
 

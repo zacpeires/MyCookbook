@@ -7,8 +7,9 @@ User.belongsToMany(Recipe, {through: 'user-recipes'})
 Recipe.belongsToMany(User, {through: 'user-recipes'})
 Cuisine.belongsToMany(Recipe, {through: 'food-types'})
 Recipe.belongsToMany(Cuisine, {through: 'food-types'})
-Home.hasMany(User)
 User.belongsTo(Home)
+Home.hasMany(User)
+
 
 
 module.exports = { User, Recipe, Home, Cuisine }

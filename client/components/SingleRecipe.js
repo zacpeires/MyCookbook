@@ -12,22 +12,25 @@ class NewRecipe extends Component {
   }
 
 
-  componentDidMount() {
+  async componentDidMount() {
     const recipes = this.props.recipe
-    if (recipes.scrapedRecipe) {
+    if (recipes.singleRecipe.id) {
       this.setState({
         recipe: recipes.scrapedRecipe.id
       })
     } else {
-     const recipe = this.props.getRecipe(this.props.match.params.recipeId)
+    await this.props.getRecipe(this.props.match.params.recipeId)
+     console.log(recipes)
      this.setState({
-       recipe: recipe
+       recipe: recipes.singleRecipe
      })
     }
   }
 
 
   render() {
+    console.log(this.state.recipe)
+
     return (
       <div />
     )

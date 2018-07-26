@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Toolbar } from "../components";
 import { connect } from "react-redux";
-import { scrapedRecipe } from "../store";
+import { scrapedRecipe, logout } from "../store";
 
 class Navbar extends Component {
   constructor() {
@@ -60,7 +60,7 @@ class Navbar extends Component {
           <Link to="/login" className="login-logout">
             <span>Login</span>
           </Link> :
-          <Link to="/" className="login-logout">
+          <Link to="/" className="login-logout" onClick={() => this.props.logout()}>
           <span className="login-logout">Logout</span>
           </Link>
           }
@@ -100,12 +100,10 @@ class Navbar extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  const history = ownProps.history
-  return {
-  scrapedRecipe: url => dispatch(scrapedRecipe(url, history))
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  scrapedRecipe: url => dispatch(scrapedRecipe(url, history)),
+  logout: () => dispatch(logout())
+})
 
 const mapStateToProps = state => ({
   recipe: state.recipe,

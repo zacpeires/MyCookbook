@@ -36,6 +36,7 @@ export const gotSingleRecipe = (id) => {
   return async dispatch => {
     const { data } = await axios.get(`/api/recipes/${id}`)
     dispatch(getSingleRecipe(data))
+    console.log(data)
   }
 }
 
