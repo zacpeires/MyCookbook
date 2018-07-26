@@ -17,7 +17,7 @@ class Routes extends Component {
 
   render() {
     return (
-      <div>
+      <div className="router-container">
       <Route exact path='/login' component={Login} />
       <Route exact path='/' component={HomePage} />
       <Route exact path='/home' component={HomePage} />

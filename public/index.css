@@ -1,10 +1,29 @@
+html{
+  min-height: 100vh;
+  min-width: 100vw
+}
 body {
   margin: 0;
+  min-height: 100vh;
+  min-width: 100vw
 }
-
 a {
   text-decoration: none;
   color: none;
+}
+
+#app {
+  min-height: 100vh;
+  min-width: 100vw
+}
+
+#app-container {
+  min-height: 100vh;
+  min-width: 100vw
+}
+
+.router-container {
+  height: 100%
 }
 
 .navbar {
@@ -12,7 +31,6 @@ a {
   background-color: purple;
   font-family: Arial;
 }
-
 
 .navbar span {
   float: left;
@@ -23,12 +41,10 @@ a {
   text-decoration: none;
 }
 
-
 .dropdown {
   float: left;
   overflow: hidden;
 }
-
 
 .dropdown .dropbtn {
   font-size: 16px;
@@ -41,21 +57,20 @@ a {
   margin: 0;
 }
 
-.navbar span:hover, .dropdown:hover .dropbtn {
+.navbar span:hover,
+.dropdown:hover .dropbtn {
   background-color: whitesmoke;
-  color: black
+  color: black;
 }
-
 
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-
 
 .dropdown-content span {
   float: none;
@@ -66,11 +81,9 @@ a {
   text-align: left;
 }
 
-
 .dropdown-content span:hover {
   background-color: #ddd;
 }
-
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -92,16 +105,15 @@ a {
   border: none;
   height: 18px;
   border-radius: 4px;
-  width: 22em
+  width: 22em;
 }
 
 .searchbar input {
   border: none;
   height: 18px;
   border-radius: 4px;
-  width: 22em
+  width: 22em;
 }
-
 
 .toolbar-btn {
   margin-left: 5px;
@@ -110,15 +122,13 @@ a {
   color: black;
   text-align: center;
   border-radius: 4px;
-  height: 18.5px
+  height: 18.5px;
 }
 
 .toolbar-btn:hover {
   background-color: purple;
   color: white;
 }
-
-
 
 .loader,
 .loader:after {
@@ -129,7 +139,7 @@ a {
 .loader {
   margin: 60px auto;
   margin-top: 15.5%;
-  background-color:lightcoral;
+  background-color: lightcoral;
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
@@ -165,28 +175,28 @@ a {
 }
 
 .login-logout {
-  float: right
+  float: right;
 }
 
 .homepage-container {
   position: absolute;
-  height: 100%;
-  width: 100%;
+  min-height: 100vh;
+  min-width: 100vw
 }
 
 .loginpage-container {
   margin-top: 7%;
 }
 
-
 .login-form-parent {
   background: #7f017f6e;
   width: 24em;
   height: 25em;
-  border-radius:10px;
+  border-radius: 10px;
   margin: 0 auto 0 auto;
   padding-bottom: 70px;
-  box-shadow: 0px 2px 3px rgba(0,0,0,.13) ,1px 2px 2px rgba(0,0,0,.1) , -1px -2px 2px rgba(0,0,0,.05)
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13), 1px 2px 2px rgba(0, 0, 0, 0.1),
+    -1px -2px 2px rgba(0, 0, 0, 0.05);
 }
 
 .login-form-parent form {
@@ -194,19 +204,17 @@ a {
   flex-direction: column;
   align-items: center;
   padding-top: 30px;
-
 }
 
-
 .login-input {
-  border-radius:4px;
+  border-radius: 4px;
   border: #ccc 1px solid;
   padding: 8px;
   width: 250px;
-  font-size:1em;
+  font-size: 1em;
   margin-top: 10px;
   margin-bottom: 2px;
-  text-align: center
+  text-align: center;
 }
 
 .login-btn {
@@ -226,20 +234,19 @@ a {
 }
 
 .login-form-parent div {
-margin-left: 15%;
-padding-top: 7%;
-font-weight: bold;
-font-size: 28px;
-
+  margin-left: 15%;
+  padding-top: 7%;
+  font-weight: bold;
+  font-size: 28px;
 }
 
 .new-user {
-color: black;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-top: 22px;
-font-size: 18px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 22px;
+  font-size: 18px;
 }
 
 .login-form-parent span {
@@ -247,21 +254,20 @@ font-size: 18px;
   width: 75%;
   text-align: center;
   margin-bottom: 8px;
-
 }
 
 #home-checkbox {
-zoom: 1.5;
+  zoom: 1.5;
 }
 
 .postcode-input {
-  border-radius:4px;
+  border-radius: 4px;
   border: #ccc 1px solid;
   padding: 8px;
   width: 250px;
-  font-size:1em;
+  font-size: 1em;
   margin-top: 12px;
-  text-align: center
+  text-align: center;
 }
 
 .signup-btn {
@@ -278,4 +284,63 @@ zoom: 1.5;
   background-color: #2980b9;
   border: white 1px solid;
   color: white;
+}
+
+.single-recipe-container {
+  margin-top: 25px;
+  position: relative;
+}
+
+.recipe-name {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.recipe-method {
+  margin: 20px;
+  width: 40%;
+  float: right;
+}
+
+.single-recipe-container {
+  margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+
+}
+
+.recipe-card {
+  height: 100%;
+  width: 60%;
+  margin-top: 70px;
+  padding: 22px;
+  background-color: white;
+  border-radius: 20px;
+  position: relative;
+
+}
+
+.recipe-center {
+  margin: 10px;
+  text-align: center
+}
+
+.recipe-ingredients {
+  width: 50%;
+  float: left;
+  margin: 20px
+}
+
+.recipe-url {
+  position: absolute;
+  left: 40%;
+  bottom: 15px;
+  width: 80%;
+  transform: translate(-20%);
+  margin: 0 auto;
 }
