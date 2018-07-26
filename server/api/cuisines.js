@@ -14,19 +14,26 @@ router.get('/', async (req, res, next) => {
 })
 
 
-router.post('/', async (req, res, next) => {
+router.put('/add', async (req, res, next) => {
   try {
 
-    // may have to loop through array or objects, depending on the input type
+    let cusisine = cuisine.findOne({
+      where: {
+        name: req.body
+      }
+    })
 
-    const newCuisine = await Cuisine.create(req.body.cuisine)
+    if (!cuisine) {
+
+    let cuisine = await Cuisine.create(req.body.cuisine)
     const recipe = await Recipe.findOne({
       where: {
         name: req.body.recipeName
       }
     })
+  }
 
-    await recipe.addCuisine(newCuisine)
+    await recipe.addCuisine(cuisine)
 
     res.json(newCuisine)
 

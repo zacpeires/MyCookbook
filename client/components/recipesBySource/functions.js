@@ -7,8 +7,6 @@ const correctlyAlignIngredients = (ingredients) => {
       refinedIngredients.push(ingredient)
     } else {
       refinedIngredients[refinedIngredients.length - 1] += ingredient
-
-      console.log(ingredient, refinedIngredients[refinedIngredients.length - 1] )
     }
   })
 

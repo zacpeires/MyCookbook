@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const RecipeFromBBC = ({
   name,
@@ -7,7 +8,8 @@ const RecipeFromBBC = ({
   nutrition,
   ingredients,
   method,
-  url
+  url,
+  showRecipeForm
 }) => {
   return (
     <div className="recipe-card">
@@ -18,7 +20,7 @@ const RecipeFromBBC = ({
         <span>{nutrition}</span>
       </div>
       <div className="recipe-ingredients">
-      <ul>
+        <ul>
           {ingredients.map(ingredient => {
             return <li key={ingredient}>{ingredient}</li>;
           })}
@@ -31,7 +33,13 @@ const RecipeFromBBC = ({
           })}
         </ul>
       </div>
-      <div className="recipe-url">{url}</div>
+      <div className="recipe-cuisine recipe-center">
+        <span>Food type or cuisine: </span>
+        <button type="submit" onClick={showRecipeForm}>Add a label</button>
+      </div>
+      <Link to={url}>
+        <div className="recipe-url">{url}</div>
+      </Link>
     </div>
   );
 };
