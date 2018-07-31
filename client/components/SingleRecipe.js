@@ -17,17 +17,17 @@ class NewRecipe extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.showRecipeForm = this.showRecipeForm.bind(this)
+    this.showAddCuisineForm = this.showAddCuisineForm.bind(this)
+    this.hideAddCuisineForm = this.hideAddCuisineForm.bind(this)
+    this.updateRecipe = this.updateRecipe.bind(this)
   }
 
 
   async componentDidMount() {
-    const recipes = this.props.recipe;
-    if (!recipes.singleRecipe.id) {
       await this.props.getRecipe(this.props.match.params.recipeId);
-    }
 
     let currentRecipe = this.props.recipe.singleRecipe;
+
 
     if (currentRecipe.url.includes("bbc")) {
       const edittedRecipe = formatMethod(currentRecipe);
@@ -39,31 +39,47 @@ class NewRecipe extends Component {
     })
   }
 
+
+
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      label: event.target.value
     })
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addedCuisineToRecipe(this.state.label)
+    const formattedLabel = this.state.label.slice(0, 1).toUpperCase() + this.state.label.slice(1)
+    this.props.addedCuisineToRecipe({label: formattedLabel, recipe: this.state.recipe})
     this.setState({
-      label: ''
+      label: '',
+    })
+    this.hideAddCuisineForm();
+    this.updateRecipe({...this.state.recipe, cuisines: [...this.state.recipe.cuisines, {type: formattedLabel}]})
+  }
+
+  showAddCuisineForm() {
+    this.setState({
+      showAddForm: true
+    })
+}
+
+  hideAddCuisineForm() {
+    this.setState({
+      showAddForm: false,
     })
   }
 
-  showRecipeForm() {
-    const form = document.getElementById ("addcuisine-form-container")
+  updateRecipe(recipe) {
+    console.log(recipe)
 
-    if (form.style.visibility === "hidden") {
-      form.style.visibility = "show";
+    this.setState({
+      recipe: recipe
+    })
   }
-}
 
 
   render() {
-    const recipe = this.state.recipe;
     const {
       name,
       description,
@@ -72,7 +88,9 @@ class NewRecipe extends Component {
       ingredients,
       method,
       url,
-    } = recipe;
+      cuisines
+    } = this.state.recipe;
+
 
     if (!this.state.recipe.name) {
       return <div />
@@ -88,9 +106,15 @@ class NewRecipe extends Component {
           ingredients={ingredients}
           method={method}
           url={url}
-          showRecipeForm={this.showRecipeForm}
+          cuisines={cuisines}
+          hideAddCuisineForm={this.hideAddCuisineForm}
+          showAddCuisineForm={this.showAddCuisineForm}
         />
-        <AddCuisineForm handleSubmit={this.handleSubmit} handleChange={this.handleChang} />
+        {
+          this.state.showAddForm ?
+          <AddCuisineForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} updateRecipe={this.state.updateRecipe} />
+           : <div />
+        }
       </div>
     );
   }

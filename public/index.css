@@ -317,12 +317,12 @@ a {
 .recipe-card {
   height: 100%;
   width: 60%;
-  margin-top: 70px;
+  margin-top: 33px;
   padding: 22px;
   background-color: white;
   border-radius: 20px;
   position: relative;
-  padding-bottom: 80px;
+  padding-bottom: 100px;
 }
 
 .recipe-center {
@@ -349,7 +349,7 @@ a {
 .recipe-cuisine {
   position: absolute;
   left: 50%;
-  bottom: 41px;
+  bottom: 28px;
   transform: translate(-50%, -50%);
 }
 
@@ -376,7 +376,8 @@ a {
   padding: 17px;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13), 1px 2px 2px rgba(0, 0, 0, 0.1), -1px -2px 2px rgba(0, 0, 0, 0.05);
   position: absolute;
-  opacity: 1
+  opacity: 1;
+  margin-top: 20%
 }
 
 .addcuisine-form-container form {

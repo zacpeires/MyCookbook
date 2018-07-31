@@ -1,12 +1,14 @@
 const router = require('express').Router();
-const { Recipe } = require('../../db/models')
+const { Recipe, Cuisine } = require('../../db/models')
 const { scrapeBBC, scrapeFoodNewtork, scrapeAllRecipes } = require('./functions')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
 
-    const recipes = await Recipe.findAll()
+    const recipes = await Recipe.findAll({
+      include: [{model: Cuisine}]
+    })
 
     res.json(recipes)
 
@@ -19,7 +21,8 @@ router.get('/:recipeId', async (req, res, next) => {
     const recipe = await Recipe.findOne({
       where: {
         id: req.params.recipeId
-      }
+      },
+      include: [{model: Cuisine}]
     })
 
     res.json(recipe)

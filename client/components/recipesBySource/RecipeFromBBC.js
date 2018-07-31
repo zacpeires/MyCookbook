@@ -9,7 +9,10 @@ const RecipeFromBBC = ({
   ingredients,
   method,
   url,
-  showRecipeForm
+  showAddCuisineForm,
+  hideAddCuisineForm,
+  cuisines
+
 }) => {
   return (
     <div className="recipe-card">
@@ -34,8 +37,16 @@ const RecipeFromBBC = ({
         </ul>
       </div>
       <div className="recipe-cuisine recipe-center">
-        <span>Food type or cuisine: </span>
-        <button type="submit" onClick={showRecipeForm}>Add a label</button>
+        <div>Food type or cuisine:
+        { cuisines.length ?
+        cuisines.map(cuisine => {
+          return (
+            <span className="cuisine-labels" key={cuisine.type}>{' ' + cuisine.type + ', '}</span>
+          )
+         }) : <div />
+        }
+        </div>
+        <button type="submit" onClick={showAddCuisineForm}>Add a label</button>
       </div>
       <Link to={url}>
         <div className="recipe-url">{url}</div>

@@ -67,5 +67,5 @@ export default (state = initialRecipes, action) => {
 /*
 Sites that I can scrape from: BBCgoodFood, FoodNetwork;
 Sites in progress: Allrecipes, Declicious Magazine;
-Sites to do: Delicious magazine, Epicurious
+Sites to do: Delicious magazine, Epicurious, Jamie Oliver,
 */

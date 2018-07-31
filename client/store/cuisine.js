@@ -9,8 +9,8 @@ const addCuisine = cuisine => ({
 })
 
 export const addedCuisineToRecipe = cuisine => {
-  return dispatch => {
-    const { data } = axios.put('/api/cuisines/add', cuisine)
+  return async dispatch => {
+    const { data } = await axios.put('/api/cuisines/add', cuisine)
     dispatch(addCuisine(data))
   }
 }

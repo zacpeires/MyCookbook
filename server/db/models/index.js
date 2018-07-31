@@ -10,6 +10,8 @@ Recipe.belongsToMany(Cuisine, {through: 'food-types'})
 User.belongsTo(Home)
 Home.hasMany(User)
 
-
+// recipe has many picture
+// home has many picture
+// user has many home
 
 module.exports = { User, Recipe, Home, Cuisine }
