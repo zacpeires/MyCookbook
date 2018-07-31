@@ -1,7 +1,7 @@
 import axios from "axios";
 import history from "../history";
 
-const GET_RECIPES = "GET_RECIPE";
+const GET_RECIPES = "GET_RECIPES";
 const GET_SINGLE_RECIPE = "GET_SINGLE_RECIPE"
 const SCRAPE_RECIPE = "SCRAPE_RECIPE";
 

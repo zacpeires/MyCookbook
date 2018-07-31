@@ -312,7 +312,7 @@ a {
   background-color: lightblue;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
 
 .recipe-card {
@@ -323,7 +323,7 @@ a {
   background-color: white;
   border-radius: 20px;
   position: relative;
-  margin-bottom: 29px
+  margin-bottom: 29px;
 }
 
 .recipe-center {
@@ -337,15 +337,13 @@ a {
   margin: 20px;
 }
 
-/* .recipe-url {
-  width: 100%;
-  text-align: center;
+.recipe-url {
   position: absolute;
-  bottom: 22px;
-
-  margin: 0 auto;
+  bottom: 7px;
+  left: 50%;
+  transform: translate(-50%, 0);
   color: black;
-} */
+}
 
 .recipe-cuisine {
   position: absolute;
@@ -375,16 +373,17 @@ a {
   border-radius: 10px;
   margin: 0 auto 0 auto;
   padding: 17px;
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13), 1px 2px 2px rgba(0, 0, 0, 0.1), -1px -2px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13), 1px 2px 2px rgba(0, 0, 0, 0.1),
+    -1px -2px 2px rgba(0, 0, 0, 0.05);
   position: absolute;
   opacity: 1;
-  margin-top: 20%
 }
 
 .addcuisine-form-container form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .addcuisine-input {
@@ -405,3 +404,47 @@ a {
 .addcuisine-input {
   margin-bottom: 0px;
 }
+
+.recipe-save-btns button {
+  background-color: #b19c9c;
+  margin-right: 5px;
+  color: white;
+  border-radius: 4px;
+}
+
+.recipe-save-btns button:hover {
+  background-color: rgb(59, 125, 158);
+  margin-right: 5px;
+  color: white;
+  border-radius: 4px;
+}
+
+.exit-btn {
+  position: absolute;
+  bottom: 8px;
+}
+
+.exit-btn:hover {
+  position: absolute;
+  bottom: 8px;
+  background-color: #2980b9;
+  border: white 1px solid;
+  color: white;
+  border-radius: 5px;
+}
+
+.recipe-save-btns {
+  margin-bottom: 12px;
+}
+
+.recipe-tiles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.recipe-tile {
+  margin: 40px;
+  max-width: 150px
+}
+

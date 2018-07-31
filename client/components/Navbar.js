@@ -77,10 +77,10 @@ class Navbar extends Component {
                 <span>Recipes</span>
               </Link>
               <Link to="/drinks">
-                <span>Cocktails & drinks</span>
+                <span>Drinks</span>
               </Link>
               <Link to="/add-recipe">
-                <span>Add a recipe</span>
+                <span>Enter a recipe</span>
               </Link>
             </div>
           </div>

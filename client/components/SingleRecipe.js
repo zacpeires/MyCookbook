@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { gotSingleRecipe, addedCuisineToRecipe } from "../store";
 import { RecipeFromBBC } from "./recipesBySource";
 import { formatMethod } from "./recipesBySource/functions"
@@ -20,6 +21,8 @@ class NewRecipe extends Component {
     this.showAddCuisineForm = this.showAddCuisineForm.bind(this)
     this.hideAddCuisineForm = this.hideAddCuisineForm.bind(this)
     this.updateRecipe = this.updateRecipe.bind(this)
+    this.saveRecipeToUser = this.saveRecipeToUser.bind(this)
+    this.saveRecipeToHome = this.saveRecipeToHome.bind(this)
   }
 
 
@@ -71,11 +74,17 @@ class NewRecipe extends Component {
   }
 
   updateRecipe(recipe) {
-    console.log(recipe)
-
     this.setState({
       recipe: recipe
     })
+  }
+
+  saveRecipeToUser() {
+
+  }
+
+  saveRecipeToHome() {
+
   }
 
 
@@ -90,7 +99,6 @@ class NewRecipe extends Component {
       url,
       cuisines
     } = this.state.recipe;
-
 
     if (!this.state.recipe.name) {
       return <div />
@@ -107,14 +115,18 @@ class NewRecipe extends Component {
           method={method}
           url={url}
           cuisines={cuisines}
-          hideAddCuisineForm={this.hideAddCuisineForm}
           showAddCuisineForm={this.showAddCuisineForm}
+          saveRecipeToUser={this.saveRecipeToUser}
+          saveRecipeToHome={this.saveRecipeToHome}
         />
         {
           this.state.showAddForm ?
-          <AddCuisineForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} updateRecipe={this.state.updateRecipe} />
+          <AddCuisineForm handleSubmit={this.handleSubmit} handleChange={this.handleChange}         hideAddCuisineForm={this.hideAddCuisineForm} />
            : <div />
         }
+      {/* <Link to={url}>
+        <div className="recipe-url">{url}</div>
+      </Link> */}
       </div>
     );
   }
