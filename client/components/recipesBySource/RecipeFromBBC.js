@@ -41,16 +41,16 @@ const RecipeFromBBC = ({
         { cuisines.length ?
         cuisines.map(cuisine => {
           return (
-            <span className="cuisine-labels" key={cuisine.type}>{' ' + cuisine.type + ', '}</span>
+            <span className="cuisine-labels" key={cuisine.type}>{' ' + cuisine.type + ' '}</span>
           )
          }) : <div />
         }
-        </div>
-        <button type="submit" onClick={showAddCuisineForm}>Add a label</button>
+               <button type="submit" onClick={showAddCuisineForm}>Add a label</button>
       </div>
-      <Link to={url}>
+        </div>
+      {/* <Link to={url}>
         <div className="recipe-url">{url}</div>
-      </Link>
+      </Link> */}
     </div>
   );
 };
