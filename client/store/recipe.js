@@ -28,6 +28,7 @@ const initialRecipes = {
 export const gotRecipes = () => {
   return async dispatch => {
    const { data } = await axios.get('/api/recipes')
+   console.log(data)
    dispatch(getRecipes(data))
   }
 }

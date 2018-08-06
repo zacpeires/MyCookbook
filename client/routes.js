@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
 import { SingleRecipe, HomePage, Login, SignUp } from './components'
-import { gotRecipes } from './store/recipe'
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router';
-import { me } from './store'
+import { me, gotRecipes } from './store'
 
 class Routes extends Component {
 
   componentDidMount() {
-  this.props.gotRecipes()
   this.props.loadUserData()
+  this.props.gotRecipes()
   }
 
 
 
   render() {
+    console.log(this.props.recipe)
+
     return (
       <div className="router-container">
       <Route exact path='/login' component={Login} />

@@ -13,6 +13,7 @@ export const createUser = userDetails => {
   return async dispatch => {
    const { data } = await axios.post('api/users/signup', userDetails)
    dispatch(getUser(data))
+   history.push('/')
   }
 }
 

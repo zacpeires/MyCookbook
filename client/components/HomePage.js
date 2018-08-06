@@ -6,9 +6,14 @@ class HomePage extends Component {
     super();
   }
 
+
+  componentDidMount() {
+
+  }
+
+
   render() {
     const recipes = this.props.recipe.allRecipes;
-
     if (!recipes.length) {
       return <div />;
     }
@@ -17,7 +22,9 @@ class HomePage extends Component {
       <div className="homepage-container">
         <div className="recipe-tiles">
           {recipes.map(recipe => {
-            return <div className="recipe-tile" key={recipe.name}>{recipe.name}</div>;
+            return <div className="recipe-tile" key={recipe.name}>
+              <div>{recipe.name}</div>
+            </div>;
           })}
         </div>
       </div>

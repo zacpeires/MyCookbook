@@ -18,15 +18,19 @@ router.post('/signup', async (req, res, next) => {
     });
 
     if (req.body.postCode) {
-      let home = await Home.findOne({
+      var home = await Home.findOne({
         where: {
           postCode: req.body.postCode
         }
       });
+
+
       if (!home) {
-       home = await Home.create({postCode: req.body.postCode})
+       home = await Home.create({postCode: req.body.postCode, numerOfPeople: 1})
       }
       await home.addUser(newUser);
+    } else if (home) {
+      await home.update()
     }
 
     res.json(newUser);

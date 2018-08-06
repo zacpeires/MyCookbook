@@ -10,6 +10,8 @@ router.get('/', async (req, res, next) => {
       include: [{model: Cuisine}]
     })
 
+    console.log('calling')
+
     res.json(recipes)
 
   } catch (error) {next(error)}

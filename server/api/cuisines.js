@@ -25,8 +25,6 @@ router.put("/add", async (req, res, next) => {
       }
     });
 
-    console.log(existingCuisine)
-
     if (existingCuisine) {
       await existingCuisine.addRecipe(recipe);
       res.json(existingCuisine);
