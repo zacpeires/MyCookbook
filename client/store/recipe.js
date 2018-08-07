@@ -6,6 +6,7 @@ const GET_RECIPES = "GET_RECIPES";
 const GET_SINGLE_RECIPE = "GET_SINGLE_RECIPE"
 const SCRAPE_RECIPE = "SCRAPE_RECIPE";
 const ADD_RECIPE_TO_USER = "ADD_RECIPE_TO_USER"
+const ADD_RECIPE_TO_HOME = "ADD_RECIPE_TO_HOME"
 
 const scrapeRecipe = recipe => ({
   type: SCRAPE_RECIPE,
@@ -24,6 +25,11 @@ const getSingleRecipe = recipe => ({
 
 const addRecipeToUser = recipe => ({
   type: ADD_RECIPE_TO_USER,
+  recipe
+})
+
+const addRecipeToHome = recipe => ({
+  type: ADD_RECIPE_TO_HOME,
   recipe
 })
 
@@ -61,6 +67,13 @@ export const recipeBelongsToUser = (userId, recipeName) => {
   }
 }
 
+export const recipeBelongsToHome = (homeId, recipeName) => {
+  return async dispatch => {
+    const { data } = await axios.put('/api/recipes/add-to-home', {home: homeId, recipe: recipeName})
+    dispatch(addRecipeToHome(data))
+  }
+}
+
 export default (state = initialRecipes, action) => {
   switch (action.type) {
     case GET_RECIPES:
@@ -73,6 +86,8 @@ export default (state = initialRecipes, action) => {
     case GET_SINGLE_RECIPE:
       return {...state, singleRecipe: action.recipe}
     case ADD_RECIPE_TO_USER:
+      return {...state, singleRecipe: action.recipe}
+    case ADD_RECIPE_TO_HOME:
       return {...state, singleRecipe: action.recipe}
     default:
       return initialRecipes;

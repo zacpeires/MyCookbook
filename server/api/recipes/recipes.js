@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Recipe, Cuisine, User } = require("../../db/models");
+const { Recipe, Cuisine, User, Home } = require("../../db/models");
 const {
   scrapeBBC,
   scrapeFoodNewtork,
@@ -86,11 +86,38 @@ router.put("/add-to-user", async (req, res, next) => {
       }
     })
 
-    console.log(req.body.user)
-
     await user.addRecipe(recipe)
 
-    res.json(user)
+    res.json(recipe)
+
+
+  } catch(error) {next(error)}
+
+});
+
+
+router.put("/add-to-home", async (req, res, next) => {
+  try {
+    console.log('home')
+
+    const homeId = req.body.home
+    const recipeName = req.body.recipe
+
+    const recipe = await Recipe.findOne({
+      where: {
+        name: recipeName
+      }
+    })
+
+    const home = await Home.findOne({
+      where: {
+        id: homeId
+      }
+    })
+
+    await home.addRecipe(recipe)
+
+    res.json(recipe)
 
 
   } catch(error) {next(error)}

@@ -10,9 +10,9 @@ const getHome = home => ({
 
 const defaultHome = {}
 
-export const addUserToHome = (userDetails) => {
-  return async (dispatch) => {
-    const { data } = axios.post('/api/home/add', userDetails)
-    dispatch(getHome(data))
-  }
-}
+// export const addUserToHome = (userDetails) => {
+//   return async (dispatch) => {
+//     const { data } = await axios.post('/api/home/add', userDetails)
+//     dispatch(getHome(data))
+//   }
+// }

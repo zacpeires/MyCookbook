@@ -5,6 +5,8 @@ const Home = require('./home')
 
 User.belongsToMany(Recipe, {through: 'user-recipes'})
 Recipe.belongsToMany(User, {through: 'user-recipes'})
+Recipe.belongsToMany(Home, {through: 'home-recipes'})
+Home.belongsToMany(Recipe, {through: 'home-recipes'})
 Cuisine.belongsToMany(Recipe, {through: 'food-types'})
 Recipe.belongsToMany(Cuisine, {through: 'food-types'})
 User.belongsTo(Home)

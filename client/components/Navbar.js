@@ -88,6 +88,9 @@ class Navbar extends Component {
               </Link>
             </div>
           </div>
+          <Link to="/user">
+            <span>Shopping List</span>
+            </Link>
         </div>
         <Toolbar
           handleChange={this.handleChange}
