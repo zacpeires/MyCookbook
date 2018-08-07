@@ -28,7 +28,6 @@ export const login = (userData) => {
   return async dispatch => {
     const { data } = await axios.put('/api/users/login',
      userData)
-     console.log(data)
     dispatch(getUser(data))
     history.push('/')
   }

@@ -56,7 +56,7 @@ router.post("/external", async (req, res, next) => {
         scrapedRecipe = await scrapeAllRecipes(req.body.recipe);
       }
 
-      console.log(scrapedRecipe);
+      console.log(scrapedRecipe)
 
       const recipe = await Recipe.create({
         ...scrapedRecipe,

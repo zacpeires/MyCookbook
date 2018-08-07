@@ -5,7 +5,7 @@ const scrapeBBC = async (url) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url);
-  await page.waitFor(2500);
+  await page.waitFor(4000);
 
 
     const result = await page.evaluate(() => {
@@ -15,8 +15,9 @@ const scrapeBBC = async (url) => {
     const nutrition = document.querySelector('.recipe-header__nutrition').innerText
     const method = document.querySelector('.method__list').innerText
     const ingredients = document.getElementById('recipe-ingredients').innerText
+    const image = document.querySelector('.img-container').innerHTML
 
-    return { name, details, description, nutrition, method, ingredients}
+    return { name, details, description, nutrition, method, ingredients, image}
   })
 
   await browser.close();
@@ -28,7 +29,7 @@ const scrapeFoodNewtork = async (url) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url);
-  await page.waitFor(2500);
+  await page.waitFor(4000);
 
     const result = await page.evaluate(() => {
     const name = document.querySelector('.o-AssetTitle__a-HeadlineText').innerText
@@ -48,7 +49,7 @@ const scrapeAllRecipes = async (url) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url);
-  await page.waitFor(2500);
+  await page.waitFor(4000);
 
     const result = await page.evaluate(() => {
     const name = document.querySelector('.recipe-summary__h1').innerText
@@ -70,7 +71,7 @@ const scrapeDeliciousMagazine = async (url) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url);
-  await page.waitFor(2500);
+  await page.waitFor(4000);
 
     const result = await page.evaluate(() => {
     const name = document.querySelector('.post-title').innerText

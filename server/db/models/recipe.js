@@ -26,6 +26,10 @@ const Recipe = db.define('recipe', {
     type: Sequelize.STRING(1234),
     allowNull: true
   },
+  image: {
+    type: Sequelize.STRING(1234),
+    allowNull: true
+  },
   url: {
     type: Sequelize.STRING(1234),
     allowNull: true

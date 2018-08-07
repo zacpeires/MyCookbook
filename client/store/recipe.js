@@ -55,8 +55,9 @@ export const gotSingleRecipe = (id) => {
 export const scrapedRecipe = (url) => {
   return async dispatch => {
     const { data } = await axios.post('/api/recipes/external', url)
-    dispatch(scrapeRecipe(data || initialRecipes.singleRecipe))
     history.push(`/recipes/${data.id}`)
+    dispatch(scrapeRecipe(data || initialRecipes.singleRecipe))
+
   };
 };
 

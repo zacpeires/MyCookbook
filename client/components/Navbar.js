@@ -11,7 +11,6 @@ class Navbar extends Component {
     this.state = {
       webScrapeUrl: "",
       search: "",
-      showLoader: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -30,17 +29,12 @@ class Navbar extends Component {
     event.preventDefault();
 
     if (this.state.webScrapeUrl.length) {
-      this.setState({
-        showLoader: true
-      })
-
     await this.props.scrapedRecipe({
       recipe: this.state.webScrapeUrl
     });
 
     this.setState({
       webScrapeUrl: '',
-      showLoader: false
     })
   }
   }
@@ -74,17 +68,14 @@ class Navbar extends Component {
               <i className="fa fa-caret-down" />
             </button>
             <div className="dropdown-content">
-              <Link to="/cuisines">
-                <span>Cuisines</span>
-              </Link>
               <Link to="/recipes">
                 <span>Recipes</span>
               </Link>
-              <Link to="/drinks">
-                <span>Drinks</span>
+              <Link to="/juices">
+                <span>Juices & smoothies</span>
               </Link>
               <Link to="/add-recipe">
-                <span>Enter a recipe</span>
+                <span>Add you own recipe</span>
               </Link>
             </div>
           </div>
@@ -98,10 +89,6 @@ class Navbar extends Component {
           webScrapeUrl={this.state.webScrapeUrl}
           search={this.state.search}
         />
-        {this.state.showLoader ?
-        <div className="loader" /> :
-        <div />
-        }
       </div>
     );
   }

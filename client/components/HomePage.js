@@ -5,10 +5,20 @@ import { Link } from "react-router-dom";
 class HomePage extends Component {
   constructor() {
     super();
+
+
+    this.renderImageComponent = this.renderImageComponent.bind(this)
+  }
+
+  async renderImageComponent() {
+    const recipeImage = await document.getElementById('recipe-image')
+    console.log(recipeImage)
   }
 
   render() {
     const recipes = this.props.recipe.allRecipes;
+    const nineRandomRecipes = []
+
     if (!recipes.length) {
       return <div />;
     }
@@ -20,11 +30,12 @@ class HomePage extends Component {
             return (
               <Link to={`/recipes/${recipe.id}`} key={recipe.name}>
                 <div className="recipe-tile">
-                  <div className="recipe-tile-name">{recipe.name} {console.log(recipe)}</div>
-                  {recipe.cuisines.length ?
-                  <div className="recipe-tile-cuisine cuisine-labels">{recipe.cuisines[0].type}</div> : <div/>
-                  }
-                </div>;
+                  <div className="recipe-tile-name">{recipe.name}</div>
+                  {/* {!recipe.cuisines.length ?
+                  <div/> :
+                  <div className="recipe-tile-cuisine cuisine-labels">{recipe.cuisines[0].type}</div>
+                  } */}
+                </div>
               </Link>
             );
           })}

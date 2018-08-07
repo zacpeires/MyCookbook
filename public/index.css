@@ -135,51 +135,6 @@ a {
   color: white;
 }
 
-.loader,
-.loader:after {
-  border-radius: 50%;
-  width: 10em;
-  height: 10em;
-}
-.loader {
-  position: absolute;
-  margin: 60px auto;
-  margin-top: 15.5%;
-  background-color: lightcoral;
-  font-size: 10px;
-  position: relative;
-  text-indent: -9999em;
-  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-left: 1.1em solid #ffffff;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-animation: load8 1.1s infinite linear;
-  animation: load8 1.1s infinite linear;
-}
-@-webkit-keyframes load8 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes load8 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
 .login-logout {
   float: right;
 }
@@ -296,6 +251,7 @@ a {
 .single-recipe-container {
   margin-top: 25px;
   position: relative;
+  padding-bottom: 50px;
 }
 
 .recipe-name {
@@ -319,18 +275,16 @@ a {
   background-color: lightblue;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-top: 36px
 }
 
 .recipe-card {
   height: 100%;
-  width: 60%;
-  margin-top: 21px;
+  width: 80%;
   padding: 22px;
   background-color: white;
   border-radius: 20px;
   position: relative;
-  margin-bottom: 29px;
 }
 
 .recipe-center {
@@ -449,6 +403,13 @@ a {
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 40px;
+  width: 90%;
+  height: 100%;
+  margin-left: 5%;
+  margin-top: 40px;
+  background: lightpink;
+  border-radius: 30px;
+
 }
 
 .recipe-tile {
@@ -461,11 +422,13 @@ a {
   align-items: center;
   border-radius: 30px;
   flex-direction: column;
+  padding: 0px 15px 0px 15px
 }
 
 .recipe-tile-name {
   color: black;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .cuisine-labels {
