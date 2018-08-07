@@ -1,67 +1,98 @@
-const router = require('express').Router();
-const { Recipe, Cuisine } = require('../../db/models')
-const { scrapeBBC, scrapeFoodNewtork, scrapeAllRecipes } = require('./functions')
-module.exports = router
+const router = require("express").Router();
+const { Recipe, Cuisine, User } = require("../../db/models");
+const {
+  scrapeBBC,
+  scrapeFoodNewtork,
+  scrapeAllRecipes
+} = require("./functions");
+module.exports = router;
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-
     const recipes = await Recipe.findAll({
-      include: [{model: Cuisine}]
-    })
+      include: [{ model: Cuisine }]
+    });
 
-    console.log('calling')
+    console.log("calling");
 
-    res.json(recipes)
+    res.json(recipes);
+  } catch (error) {
+    next(error);
+  }
+});
 
-  } catch (error) {next(error)}
-})
-
-router.get('/:recipeId', async (req, res, next) => {
+router.get("/:recipeId", async (req, res, next) => {
   try {
-
     const recipe = await Recipe.findOne({
       where: {
         id: req.params.recipeId
       },
-      include: [{model: Cuisine}]
-    })
+      include: [{ model: Cuisine }]
+    });
 
-    res.json(recipe)
-  } catch (error) {next(error)}
-})
+    res.json(recipe);
+  } catch (error) {
+    next(error);
+  }
+});
 
-
-router.post('/external', async (req, res, next) => {
+router.post("/external", async (req, res, next) => {
   try {
-
-   const existingRecipe = await Recipe.findOne({
+    const existingRecipe = await Recipe.findOne({
       where: {
         url: req.body.recipe
       }
-    })
+    });
 
     if (existingRecipe) {
-      res.json(existingRecipe)
+      res.json(existingRecipe);
     } else {
+      let scrapedRecipe;
+      if (req.body.recipe.includes("bbc")) {
+        scrapedRecipe = await scrapeBBC(req.body.recipe);
+      } else if (req.body.recipe.includes("foodnetwork")) {
+        scrapedRecipe = await scrapeFoodNewtork(req.body.recipe);
+      } else if (req.body.recipe.includes("allrecipes")) {
+        scrapedRecipe = await scrapeAllRecipes(req.body.recipe);
+      }
 
-    let scrapedRecipe;
-    if (req.body.recipe.includes('bbc')) {
-      scrapedRecipe = await scrapeBBC(req.body.recipe)
-    } else if (req.body.recipe.includes('foodnetwork'))
-    {
-      scrapedRecipe = await scrapeFoodNewtork(req.body.recipe)
+      console.log(scrapedRecipe);
 
-    } else if (req.body.recipe.includes('allrecipes')) {
-      scrapedRecipe = await scrapeAllRecipes(req.body.recipe)
+      const recipe = await Recipe.create({
+        ...scrapedRecipe,
+        url: req.body.recipe
+      });
+      res.json(recipe);
     }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put("/add-to-user", async (req, res, next) => {
+  try {
+    const userId = req.body.user
+    const recipeName = req.body.recipe
+
+    const recipe = await Recipe.findOne({
+      where: {
+        name: recipeName
+      }
+    })
+
+    const user = await User.findOne({
+      where: {
+        id: userId
+      }
+    })
+
+    console.log(req.body.user)
+
+    await user.addRecipe(recipe)
+
+    res.json(user)
 
 
-    console.log(scrapedRecipe)
+  } catch(error) {next(error)}
 
-    const recipe = await Recipe.create({...scrapedRecipe, url: req.body.recipe})
-    res.json(recipe)
-
-   }
-  } catch (error) {next(error)}
-})
+});

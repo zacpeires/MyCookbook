@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { gotSingleRecipe, addedCuisineToRecipe } from "../store";
+import { gotSingleRecipe, addedCuisineToRecipe, recipeBelongsToUser} from "../store";
 import { RecipeFromBBC } from "./recipesBySource";
 import { formatMethod } from "./recipesBySource/functions"
 import { AddCuisineForm } from '../components'
@@ -80,11 +80,14 @@ class NewRecipe extends Component {
   }
 
   saveRecipeToUser() {
-
+    const userId = this.props.user.id
+    const recipeName = this.state.recipe.name
+    this.props.recipeBelongsToUser(userId, recipeName)
   }
 
   saveRecipeToHome() {
-
+    const homeId = this.props.user.homeId
+    const recipeName = this.state.recipe.name
   }
 
 
@@ -133,12 +136,14 @@ class NewRecipe extends Component {
 }
 
 const mapStateToProps = state => ({
-  recipe: state.recipe
+  recipe: state.recipe,
+  user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({
   getRecipe: id => dispatch(gotSingleRecipe(id)),
-  addedCuisineToRecipe: (cuisine) => dispatch(addedCuisineToRecipe(cuisine))
+  addedCuisineToRecipe: (cuisine) => dispatch(addedCuisineToRecipe(cuisine)),
+  recipeBelongsToUser: (user, recipe) => dispatch(recipeBelongsToUser(user, recipe))
 });
 
 export default connect(

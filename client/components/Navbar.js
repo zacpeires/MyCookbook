@@ -18,6 +18,7 @@ class Navbar extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -60,9 +61,12 @@ class Navbar extends Component {
           <Link to="/login" className="login-logout">
             <span>Login</span>
           </Link> :
+          <div>
           <Link to="/" className="login-logout" onClick={() => this.props.logout()}>
           <span className="login-logout">Logout</span>
           </Link>
+          <span className="username">{this.props.user.name}</span>
+          </div>
           }
           <div className="dropdown">
             <button type="submit" className="dropbtn">

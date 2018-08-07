@@ -1,16 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom'
 
 class HomePage extends Component {
   constructor() {
     super();
   }
-
-
-  componentDidMount() {
-
-  }
-
 
   render() {
     const recipes = this.props.recipe.allRecipes;
@@ -23,7 +18,9 @@ class HomePage extends Component {
         <div className="recipe-tiles">
           {recipes.map(recipe => {
             return <div className="recipe-tile" key={recipe.name}>
-              <div>{recipe.name}</div>
+            <Link to={`/recipes/${recipe.id}`}>
+              <div className="recipe-tile-name">{recipe.name}</div>
+            </Link>
             </div>;
           })}
         </div>

@@ -63,6 +63,11 @@ a {
   color: black;
 }
 
+.navbar .username {
+  float: right;
+  text-decoration: underline;
+  }
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -137,6 +142,7 @@ a {
   height: 10em;
 }
 .loader {
+  position: absolute;
   margin: 60px auto;
   margin-top: 15.5%;
   background-color: lightcoral;
@@ -448,3 +454,11 @@ a {
   max-width: 150px
 }
 
+.recipe-tile-name {
+  color: black
+}
+
+.cuisine-labels {
+  font-style: italic;
+  color: black
+}
