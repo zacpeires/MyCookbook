@@ -11,14 +11,17 @@ const RecipeFromBBC = ({
   showAddCuisineForm,
   cuisines,
   saveRecipeToUser,
-  saveRecipeToHome
+  saveRecipeToHome,
+  user
 }) => {
   return (
     <div className="recipe-card">
+    { user.id ?
       <div className="recipe-save-btns">
         <button type="submit" onClick={saveRecipeToUser}>Save recipe to favourites</button>
         <button type="submit" onClick={saveRecipeToHome}>Save to home</button>
-      </div>
+      </div> : <div />
+    }
       <div className="recipe-name">{name}</div>
       <div className="recipe-description recipe-center">{description}</div>
       <div className="recipe-details recipe-center">{details}</div>

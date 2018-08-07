@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 class HomePage extends Component {
   constructor() {
@@ -17,11 +17,16 @@ class HomePage extends Component {
       <div className="homepage-container">
         <div className="recipe-tiles">
           {recipes.map(recipe => {
-            return <div className="recipe-tile" key={recipe.name}>
-            <Link to={`/recipes/${recipe.id}`}>
-              <div className="recipe-tile-name">{recipe.name}</div>
-            </Link>
-            </div>;
+            return (
+              <Link to={`/recipes/${recipe.id}`} key={recipe.name}>
+                <div className="recipe-tile">
+                  <div className="recipe-tile-name">{recipe.name} {console.log(recipe)}</div>
+                  {recipe.cuisines.length ?
+                  <div className="recipe-tile-cuisine cuisine-labels">{recipe.cuisines[0].type}</div> : <div/>
+                  }
+                </div>;
+              </Link>
+            );
           })}
         </div>
       </div>

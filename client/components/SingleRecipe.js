@@ -111,6 +111,7 @@ class NewRecipe extends Component {
     return (
       <div className="single-recipe-container">
          <RecipeFromBBC
+          user={this.props.user}
           name={name}
           description={description}
           details={details}

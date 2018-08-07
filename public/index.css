@@ -188,6 +188,7 @@ a {
   position: absolute;
   min-height: 100vh;
   min-width: 100vw;
+  background-color: lightblue;
 }
 
 .loginpage-container {
@@ -447,18 +448,32 @@ a {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 40px;
 }
 
 .recipe-tile {
   margin: 40px;
-  max-width: 150px
+  height: 110px;
+  width: 270px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  flex-direction: column;
 }
 
 .recipe-tile-name {
-  color: black
+  color: black;
+  margin-bottom: 10px;
 }
 
 .cuisine-labels {
   font-style: italic;
   color: black
+}
+
+.recipe-tile-cuisine {
+  font-size: 13px;
+  text-decoration: underline
 }
