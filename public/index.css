@@ -455,8 +455,8 @@ a {
 .dashboard-card {
   width: 25%;
   background-color: white;
-  margin: 40px;
-  border-radius: 20px
+  margin: 55px 40px 72px 40px;
+  border-radius: 20px;
 }
 
 .bbc-title {
