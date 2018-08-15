@@ -85,9 +85,9 @@ router.put("/add-to-user", async (req, res, next) => {
     ]
     })
 
-    if (recipe.users[0]) {
-      next()
-    } else {
+    // if (recipe.users[0]) {
+    //   next()
+    // } else {
 
     const user = await User.findOne({
       where: {
@@ -98,7 +98,7 @@ router.put("/add-to-user", async (req, res, next) => {
     await user.addRecipe(recipe)
 
     res.json(recipe)
-  }
+  // }
 
   } catch(error) {next(error)}
 
@@ -116,19 +116,29 @@ router.put("/add-to-home", async (req, res, next) => {
     const recipe = await Recipe.findOne({
       where: {
         name: recipeName
-      }
+      },
+
+      include: [
+        {model: Home,
+        through: 'home-recipes'}
+      ]
     })
+
+    // if (recipe.home[0]) {
+    //   next()
+    // } else {
 
     const home = await Home.findOne({
       where: {
         id: homeId
-      }
+      },
     })
 
-    await home.addRecipe(recipe.users)
+
+    await home.addRecipe(recipe)
 
     res.json(recipe)
-
+  // }
 
   } catch(error) {next(error)}
 

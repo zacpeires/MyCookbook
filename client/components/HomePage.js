@@ -35,6 +35,17 @@ class HomePage extends Component {
 
     return (
       <div className="homepage-container">
+        <div className="sites-supported-container">
+          <div className="sites-supported-internal">
+          <div className="supported-list">
+            <ul>
+              <li className="currently-supported-title">Currently supported: </li>
+              <li className="currently-supported-list">BBC Goodfood</li>
+              <li className="currently-supported-list bottom-of-list">Food Network</li>
+            </ul>
+          </div>
+          </div>
+        </div>
         <div className="recipe-tiles">
           {recipes.map(recipe => {
             return (

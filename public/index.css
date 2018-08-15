@@ -411,6 +411,7 @@ a {
   margin-top: 40px;
   background: lightpink;
   border-radius: 30px;
+  margin-top: 80px;
 
 }
 
@@ -424,7 +425,8 @@ a {
   align-items: center;
   border-radius: 30px;
   flex-direction: column;
-  padding: 0px 15px 0px 15px
+  padding: 0px 15px 0px 15px;
+  margin-bottom: 6%
 }
 
 .recipe-tile-name {
@@ -470,4 +472,48 @@ a {
   padding-top: 2px;
   color: black;
   font-style: italic;
+}
+
+.sites-supported-container {
+  border-radius: 30px;
+  background: lightslategrey;
+  width: 42%;
+  margin-left: 30%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  margin-top: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.supported-list {
+  margin-left: 28%;
+}
+
+.sites-supported-internal {
+  background-color: lightsteelblue;
+  border-radius: 10px;
+  height: 65%;
+  width: 87%;
+
+  padding-bottom: 11px;
+}
+
+.currently-supported-title {
+  list-style-type: none;
+  font-weight: bold;
+  padding: 3px;
+}
+
+.currently-supported-list  {
+  font-size: 14px;
+  padding: 3px;
+}
+
+
+.bottom-of-list {
+  padding-bottom: 6px;
+
 }
