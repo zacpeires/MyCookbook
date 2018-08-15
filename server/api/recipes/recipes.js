@@ -77,8 +77,17 @@ router.put("/add-to-user", async (req, res, next) => {
     const recipe = await Recipe.findOne({
       where: {
         name: recipeName
-      }
+      },
+
+    include: [
+      {model: User,
+      through: 'user-recipes'}
+    ]
     })
+
+    if (recipe.users[0]) {
+      next()
+    }
 
     const user = await User.findOne({
       where: {
@@ -86,7 +95,7 @@ router.put("/add-to-user", async (req, res, next) => {
       }
     })
 
-    await user.addRecipe(recipe)
+    // await user.addRecipe(recipe)
 
     res.json(recipe)
 
@@ -95,10 +104,11 @@ router.put("/add-to-user", async (req, res, next) => {
 
 });
 
+//need to make it so you can't duplicate additions to the db for above nad below
+
 
 router.put("/add-to-home", async (req, res, next) => {
   try {
-    console.log('home')
 
     const homeId = req.body.home
     const recipeName = req.body.recipe
@@ -115,7 +125,7 @@ router.put("/add-to-home", async (req, res, next) => {
       }
     })
 
-    await home.addRecipe(recipe)
+    await home.addRecipe(recipe.users)
 
     res.json(recipe)
 
