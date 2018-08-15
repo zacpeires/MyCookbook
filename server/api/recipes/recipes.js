@@ -87,7 +87,7 @@ router.put("/add-to-user", async (req, res, next) => {
 
     if (recipe.users[0]) {
       next()
-    }
+    } else {
 
     const user = await User.findOne({
       where: {
@@ -95,10 +95,10 @@ router.put("/add-to-user", async (req, res, next) => {
       }
     })
 
-    // await user.addRecipe(recipe)
+    await user.addRecipe(recipe)
 
     res.json(recipe)
-
+  }
 
   } catch(error) {next(error)}
 
