@@ -10,58 +10,59 @@ class Navbar extends Component {
 
     this.state = {
       webScrapeUrl: "",
-      search: "",
+      search: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
-
   }
 
   async handleSubmit(event) {
     event.preventDefault();
 
     if (this.state.webScrapeUrl.length) {
-    await this.props.scrapedRecipe({
-      recipe: this.state.webScrapeUrl
-    });
+      await this.props.scrapedRecipe({
+        recipe: this.state.webScrapeUrl
+      });
 
-    this.setState({
-      webScrapeUrl: '',
-    })
+      this.setState({
+        webScrapeUrl: ""
+      });
+    }
   }
-  }
-
 
   render() {
-
     return (
       <div>
         <div className="navbar">
           <Link to="/home">
             <span>Home</span>
           </Link>
-          <Link to="/user">
+          <Link to="/dashboard">
             <span>Dashboard</span>
           </Link>
-          { !this.props.isLoggedIn ?
-          <Link to="/login" className="login-logout">
-            <span>Login</span>
-          </Link> :
-          <div>
-          <Link to="/" className="login-logout" onClick={() => this.props.logout()}>
-          <span className="login-logout">Logout</span>
-          </Link>
-          <span className="username">{this.props.user.name}</span>
-          </div>
-          }
+          {!this.props.isLoggedIn ? (
+            <Link to="/login" className="login-logout">
+              <span>Login</span>
+            </Link>
+          ) : (
+            <div>
+              <Link
+                to="/"
+                className="login-logout"
+                onClick={() => this.props.logout()}
+              >
+                <span className="login-logout">Logout</span>
+              </Link>
+              <span className="username">{this.props.user.name}</span>
+            </div>
+          )}
           <div className="dropdown">
             <button type="submit" className="dropbtn">
               Recipes
@@ -79,9 +80,6 @@ class Navbar extends Component {
               </Link>
             </div>
           </div>
-          <Link to="/user">
-            <span>Shopping List</span>
-            </Link>
         </div>
         <Toolbar
           handleChange={this.handleChange}
@@ -94,10 +92,10 @@ class Navbar extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   scrapedRecipe: url => dispatch(scrapedRecipe(url, history)),
   logout: () => dispatch(logout())
-})
+});
 
 const mapStateToProps = state => ({
   recipe: state.recipe,

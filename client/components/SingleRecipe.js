@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { gotSingleRecipe, addedCuisineToRecipe, recipeBelongsToUser, recipeBelongsToHome} from "../store";
 import { RecipeFromBBC } from "./recipesBySource";
-import { formatMethod } from "./recipesBySource/functions"
+import { formatMethod } from "./recipesBySource/functions/bbcFunctions"
 import { AddCuisineForm } from '../components'
 
 class NewRecipe extends Component {
@@ -28,7 +28,6 @@ class NewRecipe extends Component {
 
   async componentDidMount() {
       await this.props.getRecipe(this.props.match.params.recipeId);
-
     let currentRecipe = this.props.recipe.singleRecipe;
 
 

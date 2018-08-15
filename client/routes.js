@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { SingleRecipe, HomePage, Login, SignUp } from "./components";
+import { SingleRecipe, HomePage, Login, SignUp, Dashboard } from "./components";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { withRouter, Switch } from "react-router";
@@ -21,6 +21,7 @@ class Routes extends Component {
           <Route path="/recipes/:recipeId" component={SingleRecipe} />
           {/* <Route path="/recipes" component={} /> */}
           <Route exact path="/new-user" component={SignUp} />
+          <Route path="/dashboard" component={Dashboard} />
         </Switch>
       </div>
     );

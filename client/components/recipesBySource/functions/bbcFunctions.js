@@ -15,15 +15,11 @@ const correctlyAlignIngredients = (ingredients) => {
 
 
 
-
 export const formatMethod = (currentRecipe) => {
-
 
   let { name, description, details, nutrition, method, ingredients, url, cuisines } = currentRecipe
   let formattedMethod = [];
   let startOfLine = 0;
-
-
 
 
   method = method.split("\n").filter(instruction => {
@@ -38,10 +34,9 @@ export const formatMethod = (currentRecipe) => {
     }
   })
 
-
-
   ingredients = correctlyAlignIngredients(ingredients)
 
   return { name, description, details, nutrition, method, ingredients, url, cuisines }
 }
+
 
