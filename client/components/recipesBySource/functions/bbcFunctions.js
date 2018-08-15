@@ -14,12 +14,16 @@ const correctlyAlignIngredients = (ingredients) => {
 }
 
 
+export const nameSourceOfRecipeSource = url => {
+  if (url.includes('bbc')) {
+  return url.slice(12, 15).toUpperCase();
+  }
+}
+
 
 export const formatMethod = (currentRecipe) => {
 
   let { name, description, details, nutrition, method, ingredients, url, cuisines } = currentRecipe
-  let formattedMethod = [];
-  let startOfLine = 0;
 
 
   method = method.split("\n").filter(instruction => {
@@ -33,6 +37,9 @@ export const formatMethod = (currentRecipe) => {
       return ingredient
     }
   })
+
+  url = nameSourceOfRecipeSource(url)
+
 
   ingredients = correctlyAlignIngredients(ingredients)
 

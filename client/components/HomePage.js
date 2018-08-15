@@ -8,12 +8,20 @@ class HomePage extends Component {
 
 
     this.renderImageComponent = this.renderImageComponent.bind(this)
+    this.recipeUrlEdit = this.recipeUrlEdit.bind(this)
   }
 
   async renderImageComponent() {
     const recipeImage = await document.getElementById('recipe-image')
     console.log(recipeImage)
   }
+
+  recipeUrlEdit(url) {
+    if (url.includes('bbc')) {
+      return url.slice(12, 15).toUpperCase() + ' Good Food'
+      }
+  }
+
 
   render() {
     const recipes = this.props.recipe.allRecipes;
@@ -23,6 +31,8 @@ class HomePage extends Component {
       return <div />;
     }
 
+    console.log(recipes)
+
     return (
       <div className="homepage-container">
         <div className="recipe-tiles">
@@ -31,10 +41,7 @@ class HomePage extends Component {
               <Link to={`/recipes/${recipe.id}`} key={recipe.name}>
                 <div className="recipe-tile">
                   <div className="recipe-tile-name">{recipe.name}</div>
-                  {/* {!recipe.cuisines.length ?
-                  <div/> :
-                  <div className="recipe-tile-cuisine cuisine-labels">{recipe.cuisines[0].type}</div>
-                  } */}
+                  <div className="bbc-title homepage-recipe-url-title">{this.recipeUrlEdit(recipe.url)}</div>
                 </div>
               </Link>
             );

@@ -458,3 +458,16 @@ a {
   margin: 40px;
   border-radius: 20px
 }
+
+.bbc-title {
+    text-decoration: underline;
+    padding-bottom: 3px;
+    padding-left: 1px;
+}
+
+.homepage-recipe-url-title {
+  font-size: 14px;
+  padding-top: 2px;
+  color: black;
+  font-style: italic;
+}

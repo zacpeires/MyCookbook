@@ -49,6 +49,7 @@ class NewRecipe extends Component {
     })
   }
 
+
   handleSubmit(event) {
     event.preventDefault();
     const formattedLabel = this.state.label.slice(0, 1).toUpperCase() + this.state.label.slice(1)
@@ -89,7 +90,6 @@ class NewRecipe extends Component {
     const recipeName = this.state.recipe.name
     this.props.recipeBelongsToHome(homeId, recipeName)
   }
-
 
   render() {
     const {

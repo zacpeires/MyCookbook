@@ -12,10 +12,12 @@ const RecipeFromBBC = ({
   cuisines,
   saveRecipeToUser,
   saveRecipeToHome,
-  user
+  user,
+  url
 }) => {
   return (
     <div className="recipe-card">
+     <div className="bbc-title">{url} {' Good Food'}</div>
     { user.id ?
       <div className="recipe-save-btns">
         <button type="submit" onClick={saveRecipeToUser}>Save recipe to favourites</button>
