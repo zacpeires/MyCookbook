@@ -5,6 +5,7 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import recipe from './recipe'
 import cuisine from './cuisine'
+import favourites from './favourites'
 // import home from './home'
 
 
@@ -18,3 +19,4 @@ export default store
 export * from './user'
 export * from './recipe'
 export * from './cuisine'
+export * from './favourites'

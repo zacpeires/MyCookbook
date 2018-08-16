@@ -5,9 +5,18 @@ import { UserDashboard } from '../Dashboard'
 class MainDashboard extends Component {
   constructor() {
     super();
+
+    this.state = {
+      userId: 0
+    }
   }
 
+
   render() {
+    if (!this.props.user.id) {
+      return <div />
+    }
+
     return (
       <div className="dashboard-container">
         <div className="dashboard-title">My Recipes</div>
@@ -15,7 +24,7 @@ class MainDashboard extends Component {
 
         <div />
         <div className="user-card dashboard-card"/>
-          <UserDashboard/>
+          <UserDashboard userId={this.props.user.id}/>
         <div />
         <div className="shopping-list dashboard-card"/>
 

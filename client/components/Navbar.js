@@ -44,7 +44,7 @@ class Navbar extends Component {
           <Link to="/home">
             <span>Home</span>
           </Link>
-          <Link to="/dashboard">
+          <Link to={`/dashboard/${this.props.user.id}`}>
             <span>Dashboard</span>
           </Link>
           {!this.props.isLoggedIn ? (

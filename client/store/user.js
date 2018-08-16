@@ -3,11 +3,13 @@ import history from "../history";
 
 const GET_USER = "GET_USER";
 const REMOVE_USER = "REMOVE_USER";
+const GET_USER_RECIPES = "GET_USER_RECIPES"
 
 const defaultUser = {};
 
 const getUser = user => ({ type: GET_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
+
 
 export const createUser = userDetails => {
   return async dispatch => {
@@ -39,6 +41,8 @@ export const logout = () => {
     dispatch(removeUser())
   }
 }
+
+
 
 export default (state = defaultUser, action) => {
   switch (action.type) {

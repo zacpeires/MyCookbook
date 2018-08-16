@@ -1,4 +1,4 @@
-const router = require("express").Router();
+const router = require('express').Router();
 const { Recipe, Cuisine, User, Home } = require("../../db/models");
 const {
   scrapeBBC,
@@ -146,3 +146,4 @@ router.put("/add-to-home", async (req, res, next) => {
   } catch(error) {next(error)}
 
 });
+
