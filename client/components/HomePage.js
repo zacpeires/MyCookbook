@@ -31,8 +31,6 @@ class HomePage extends Component {
       return <div />;
     }
 
-    console.log(recipes)
-
     return (
       <div className="homepage-container">
         <div className="sites-supported-container">
@@ -40,8 +38,14 @@ class HomePage extends Component {
           <div className="supported-list">
             <ul>
               <li className="currently-supported-title">Currently supported: </li>
-              <li className="currently-supported-list">BBC Goodfood</li>
+              <a target="_blank" href="http://bbcgoodfood.com/">
+              <li
+              className="currently-supported-list">BBC Goodfood
+              </li>
+              </a>
+              <a target="_blank" href="http://www.foodnetwork.co.uk/?utm_source=foodnetwork.com&utm_medium=domestic">
               <li className="currently-supported-list bottom-of-list">Food Network</li>
+              </a>
             </ul>
           </div>
           </div>

@@ -39,6 +39,8 @@ class NewRecipe extends Component {
     this.setState({
       recipe: currentRecipe
     })
+
+    console.log(this.state.recipe)
   }
 
 

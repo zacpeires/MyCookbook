@@ -25,6 +25,9 @@ const scrapeBBC = async (url) => {
 
 }
 
+
+// webscrape of FNW not working
+
 const scrapeFoodNewtork = async (url) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();

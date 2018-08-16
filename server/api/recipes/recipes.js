@@ -51,7 +51,10 @@ router.post("/external", async (req, res, next) => {
       if (req.body.recipe.includes("bbc")) {
         scrapedRecipe = await scrapeBBC(req.body.recipe);
       } else if (req.body.recipe.includes("foodnetwork")) {
+
         scrapedRecipe = await scrapeFoodNewtork(req.body.recipe);
+
+
       } else if (req.body.recipe.includes("allrecipes")) {
         scrapedRecipe = await scrapeAllRecipes(req.body.recipe);
       }

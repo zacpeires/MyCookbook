@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux"
+import { UserDashboard } from '../Dashboard'
 
-class Dashboard extends Component {
+class MainDashboard extends Component {
   constructor() {
     super();
   }
@@ -9,11 +10,12 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard-container">
+        <div className="dashboard-title">My Recipes</div>
         <div className="home-card dashboard-card"/>
 
         <div />
         <div className="user-card dashboard-card"/>
-
+          <UserDashboard/>
         <div />
         <div className="shopping-list dashboard-card"/>
 
@@ -32,4 +34,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps)(MainDashboard)
