@@ -461,6 +461,7 @@ a {
   background-color: white;
   margin: 55px 40px 72px 40px;
   border-radius: 20px;
+  padding-top: 20px;
 }
 
 .bbc-title {
@@ -529,16 +530,13 @@ a {
   font-size: 18px;
 }
 
-.user-card {
-  position: relative;
+.user-card span {
+  margin-left: 33%;
+  text-decoration: underline
 }
 
-.user-dashboard-data {
-  position: absolute;
-  width: 25%;
-  left: 12.5%;
-  margin-left: 50px;
-  top: 18.2%;
-  font-size: 17px;
-  text-decoration: underline;
+.indi-recipes {
+  margin-top: 12px;
+  margin-left: 5%;
+  width: 80%;
 }

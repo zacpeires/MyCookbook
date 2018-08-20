@@ -7,32 +7,35 @@ class UserDashboard extends Component {
     super();
 
     this.state = {
-      favouriteRecipes: []
+      userObjectWithFavourites: {}
     };
   }
 
   componentDidMount() {
     this.props.gotUserRecipes(this.props.userId)
-
-
-    const usersRecipes = this.props.favourites
-
-    if (usersRecipes) {
-
-    console.log(usersRecipes)
-    }
-
-    // this.setState({
-    //  favouriteRecipes: usersRecipes)}
   }
-
 
 
   render() {
 
+const userRecipes = this.props.favourites.userFavourites.recipes
+
+if (!userRecipes) {
+  return <div />
+}
+
     return (
-      <div className="user-dashboard-data">
-        <div>User</div>
+      <div className="user-card dashboard-card">
+      <span>User recipes</span>
+      <ul className="user-recipes-list">
+        {
+          userRecipes.map(recipe => {
+            return (
+              <li className="indi-recipes" key={recipe.id}>{recipe.name}</li>
+            )
+          })
+        }
+        </ul>
       </div>
     )
   }

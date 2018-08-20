@@ -9,7 +9,7 @@ import favourites from './favourites'
 // import home from './home'
 
 
-const reducer = combineReducers({user, recipe, cuisine})
+const reducer = combineReducers({user, recipe, cuisine, favourites})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

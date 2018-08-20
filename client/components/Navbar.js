@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Toolbar } from "../components";
 import { connect } from "react-redux";
 import { scrapedRecipe, logout } from "../store";
+import { withRouter } from "react-router";
 
 class Navbar extends Component {
   constructor() {
@@ -103,7 +104,7 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Navbar);
+)(Navbar));

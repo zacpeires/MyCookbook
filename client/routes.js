@@ -21,7 +21,7 @@ class Routes extends Component {
           <Route path="/recipes/:recipeId" component={SingleRecipe} />
           {/* <Route path="/recipes" component={} /> */}
           <Route exact path="/new-user" component={SignUp} />
-          <Route path="/dashboard/:userId" component={MainDashboard} />
+          <Route exact path="/dashboard/:userId" component={MainDashboard} />
         </Switch>
       </div>
     );
