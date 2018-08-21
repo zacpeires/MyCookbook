@@ -6,10 +6,11 @@ import user from './user'
 import recipe from './recipe'
 import cuisine from './cuisine'
 import favourites from './favourites'
+import shoppingList from './shoppingList'
 // import home from './home'
 
 
-const reducer = combineReducers({user, recipe, cuisine, favourites})
+const reducer = combineReducers({user, recipe, cuisine, favourites, shoppingList})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
@@ -20,3 +21,4 @@ export * from './user'
 export * from './recipe'
 export * from './cuisine'
 export * from './favourites'
+export * from './shoppingList'

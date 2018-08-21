@@ -39,5 +39,7 @@ export default (state = defaultShoppingList, action) => {
       return {...state, allItems: action.list}
     case ADD_ITEM:
       return {...state, singleItem: action.item, allItems: [...state.allItems, action.item]}
+    default:
+      return defaultShoppingList
   }
 }

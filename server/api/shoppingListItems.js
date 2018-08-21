@@ -3,7 +3,7 @@ const { ShoppingListItem, User } = require('../db/models')
 module.exports = router
 
 
-router.get('/shopping-list-item/:userId', async (req, res, next) => {
+router.get('/:userId', async (req, res, next) => {
   try {
     const userId = req.params.userId
     const user = await User.findOne({

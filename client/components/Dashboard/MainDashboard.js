@@ -16,8 +16,7 @@ class MainDashboard extends Component {
         <div className="dashboard-title">My Recipes</div>
           <UserDashboard userId={this.props.user.id}/>
           <HomeDashboard userId={this.props.user.id}/>
-        <div className="shopping-list dashboard-card"/>
-        <div />
+          <ShoppingList  userId={this.props.user.id}/>
 
 
       </div>
