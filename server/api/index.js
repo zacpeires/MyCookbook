@@ -7,6 +7,7 @@ router.use('/cuisines', require('./cuisines'))
 router.use('/recipes', require('./recipes/recipes'))
 router.use('/home', require('./homes'))
 router.use('/favourites', require('./favourites'))
+router.use('/shopping-list-items', require('./shoppingListItems'))
 
 
 router.use(function (req, res, next) {

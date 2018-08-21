@@ -27,10 +27,6 @@ class HomePage extends Component {
     const recipes = this.props.recipe.allRecipes;
     const nineRandomRecipes = []
 
-    if (!recipes.length) {
-      return <div />;
-    }
-
     return (
       <div className="homepage-container">
         <div className="sites-supported-container">
@@ -51,7 +47,9 @@ class HomePage extends Component {
           </div>
         </div>
         <div className="recipe-tiles">
-          {recipes.map(recipe => {
+          { recipes.length ?
+
+            recipes.map(recipe => {
             return (
               <Link to={`/recipes/${recipe.id}`} key={recipe.name}>
                 <div className="recipe-tile">
@@ -60,7 +58,9 @@ class HomePage extends Component {
                 </div>
               </Link>
             );
-          })}
+          })
+         : <div className="no-recipes">There are currently no Recipes listed. Add a recipe, or Scrape from the web</div>
+          }
         </div>
       </div>
     );

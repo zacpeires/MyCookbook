@@ -88,9 +88,6 @@ router.put("/add-to-user", async (req, res, next) => {
     ]
     })
 
-    // if (recipe.users[0]) {
-    //   next()
-    // } else {
 
     const user = await User.findOne({
       where: {
@@ -106,8 +103,6 @@ router.put("/add-to-user", async (req, res, next) => {
   } catch(error) {next(error)}
 
 });
-
-//need to make it so you can't duplicate additions to the db for above nad below
 
 
 router.put("/add-to-home", async (req, res, next) => {
@@ -126,10 +121,6 @@ router.put("/add-to-home", async (req, res, next) => {
         through: 'home-recipes'}
       ]
     })
-
-    // if (recipe.home[0]) {
-    //   next()
-    // } else {
 
     const home = await Home.findOne({
       where: {

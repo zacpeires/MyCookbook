@@ -1,6 +1,7 @@
 import React from 'react'
 import {Navbar} from './components'
 import Routes from './routes'
+import { withRouter } from "react-router";
 
 const App = () => {
   return (
@@ -11,4 +12,4 @@ const App = () => {
   )
 }
 
-export default App
+export default withRouter(App)

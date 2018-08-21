@@ -1,31 +1,36 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { gotUserRecipes } from "../../store";
+import { gotHomeRecipes } from "../../store";
 import { Link } from "react-router-dom";
 
 
-class UserDashboard extends Component {
+
+class HomeDashboard extends Component {
+  constructor() {
+    super();
+  }
+
   componentDidMount() {
-    this.props.gotUserRecipes(this.props.userId);
+    this.props.gotHomeRecipes(this.props.userId);
   }
 
   render() {
-    const userRecipes = this.props.favourites.userFavourites.recipes;
+    const homeRecipes = this.props.favourites.homeFavourites.recipes;
 
     return (
-      <div className="user-card dashboard-card">
-        <span>User recipes</span>
+      <div className="home-card dashboard-card">
+        <span>Home recipes</span>
         <ul className="user-recipes-list">
-          {userRecipes ? userRecipes.map(recipe => {
+          { homeRecipes ? homeRecipes.map(recipe => {
             return (
               <Link to={`/recipes/${recipe.id}`} key={recipe.id}>
               <li className="indi-recipes">
                 {recipe.name}
               </li>
-              </Link >
+              </Link>
             );
           }) : <div>No recipes are currently saved to this account</div>
-        }
+          }
         </ul>
       </div>
     );
@@ -38,10 +43,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  gotUserRecipes: id => dispatch(gotUserRecipes(id))
+  gotHomeRecipes: id => dispatch(gotHomeRecipes(id))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserDashboard);
+)(HomeDashboard);

@@ -22,3 +22,25 @@ router.get('/user-recipes/:userId', async (req, res, next) => {
   } catch(error) {next(error)}
 
 })
+
+
+router.get('/home-recipes/:homeId', async (req, res, next) => {
+
+  try {
+    const homeId = req.params.homeId
+    const home = await Home.findOne({
+      where: {
+        id: homeId
+      },
+    include: [
+      {model: Recipe,
+      through: 'home-recipes'}
+    ]
+    })
+
+    res.json(home)
+
+
+  } catch(error) {next(error)}
+
+})

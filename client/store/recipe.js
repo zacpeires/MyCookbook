@@ -1,6 +1,5 @@
 import axios from "axios";
 import history from "../history";
-import user from "./user";
 
 const GET_RECIPES = "GET_RECIPES";
 const GET_SINGLE_RECIPE = "GET_SINGLE_RECIPE"

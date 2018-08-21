@@ -2,6 +2,7 @@ const User = require('./user')
 const Recipe = require('./recipe')
 const Cuisine = require('./cuisine')
 const Home = require('./home')
+const shoppingListItem = require('./shoppingListItem')
 
 User.belongsToMany(Recipe, {through: 'user-recipes'})
 Recipe.belongsToMany(User, {through: 'user-recipes'})
@@ -11,9 +12,12 @@ Cuisine.belongsToMany(Recipe, {through: 'food-types'})
 Recipe.belongsToMany(Cuisine, {through: 'food-types'})
 User.belongsTo(Home)
 Home.hasMany(User)
+User.hasMany(shoppingListItem)
+shoppingListItem.belongsTo(User)
+
 
 // recipe has many picture
 // home has many picture
 // user has many home
 
-module.exports = { User, Recipe, Home, Cuisine }
+module.exports = { User, Recipe, Home, Cuisine, shoppingListItem }

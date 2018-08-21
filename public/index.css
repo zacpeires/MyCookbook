@@ -427,7 +427,6 @@ a {
   border-radius: 30px;
   flex-direction: column;
   padding: 0px 15px 0px 15px;
-  margin-bottom: 6%
 }
 
 .recipe-tile-name {
@@ -459,7 +458,7 @@ a {
 .dashboard-card {
   width: 25%;
   background-color: white;
-  margin: 55px 40px 72px 40px;
+  margin: 90px 40px 72px 40px;
   border-radius: 20px;
   padding-top: 20px;
 }
@@ -528,9 +527,15 @@ a {
   position: absolute;
   top: 17px;
   font-size: 18px;
+  margin-top: 20px;
 }
 
 .user-card span {
+  margin-left: 33%;
+  text-decoration: underline
+}
+
+.home-card span {
   margin-left: 33%;
   text-decoration: underline
 }
@@ -539,4 +544,15 @@ a {
   margin-top: 12px;
   margin-left: 5%;
   width: 80%;
+  color: black;
+}
+
+.user-recipes-list {
+  margin-top: 10%;
+}
+
+.no-recipes {
+height: 200px;
+display: flex;
+align-items: center;
 }
