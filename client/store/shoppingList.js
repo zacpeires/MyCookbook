@@ -22,7 +22,7 @@ const addItem = item => ({
 export const gotShoppingList = userId => {
   return async dispatch => {
     const { data } = await axios.get(`/api/shopping-list-items/${userId}`)
-   dispatch(getShoppingList(data))
+   dispatch(getShoppingList(data || defaultShoppingList.allItems))
   }
 }
 

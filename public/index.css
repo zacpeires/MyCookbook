@@ -556,3 +556,8 @@ height: 200px;
 display: flex;
 align-items: center;
 }
+
+.shopping-list-title {
+  margin-left: 33%;
+  text-decoration: underline;
+}

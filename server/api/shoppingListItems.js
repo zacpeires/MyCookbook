@@ -6,13 +6,14 @@ module.exports = router
 router.get('/:userId', async (req, res, next) => {
   try {
     const userId = req.params.userId
+
     const user = await User.findOne({
       where: {
         id: userId
       }
     })
 
-    const items = await user.getShoppingListItem();
+    const items = await user.getShoppingListItems();
 
     res.json(items)
 
