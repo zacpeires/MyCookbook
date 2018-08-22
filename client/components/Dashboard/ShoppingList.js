@@ -55,10 +55,9 @@ class ShoppingList extends Component {
       <div className="shopping-list dashboard-card">
       <div className="shopping-list-title">My shopping-list</div>
 
-      <div className="shopping-list-form-container">
-      <button type='input' onClick={this.showForm}>Add item</button>
+      <button type='input' onClick={this.showForm} className="show-shopping-list-btn">Add item</button>
 
-
+      <div className="add-item-form-container">
        { this.state.showForm ?
       <AddItemForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} name={this.state.name} personalItem={this.state.personalItem} /> : <div />
       }

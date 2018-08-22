@@ -66,7 +66,7 @@ a {
 .navbar .username {
   float: right;
   text-decoration: underline;
-  }
+}
 
 .dropdown-content {
   display: none;
@@ -144,7 +144,7 @@ a {
   min-height: 100vh;
   min-width: 100vw;
   background-color: lightblue;
-  padding-bottom: 6.5%
+  padding-bottom: 6.5%;
 }
 
 .loginpage-container {
@@ -276,7 +276,7 @@ a {
   background-color: lightblue;
   display: flex;
   justify-content: center;
-  padding-top: 36px
+  padding-top: 36px;
 }
 
 .recipe-card {
@@ -413,7 +413,6 @@ a {
   background: lightpink;
   border-radius: 30px;
   margin-top: 80px;
-
 }
 
 .recipe-tile {
@@ -437,12 +436,12 @@ a {
 
 .cuisine-labels {
   font-style: italic;
-  color: black
+  color: black;
 }
 
 .recipe-tile-cuisine {
   font-size: 13px;
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 .dashboard-container {
@@ -452,7 +451,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  position: relative
+  position: relative;
 }
 
 .dashboard-card {
@@ -464,9 +463,9 @@ a {
 }
 
 .bbc-title {
-    text-decoration: underline;
-    padding-bottom: 3px;
-    padding-left: 1px;
+  text-decoration: underline;
+  padding-bottom: 3px;
+  padding-left: 1px;
 }
 
 .homepage-recipe-url-title {
@@ -510,17 +509,15 @@ a {
   color: darkslategrey;
 }
 
-.currently-supported-list  {
+.currently-supported-list {
   font-size: 14px;
   padding: 3px;
   color: white;
   margin-left: 10%;
 }
 
-
 .bottom-of-list {
   padding-bottom: 6px;
-
 }
 
 .dashboard-title {
@@ -532,12 +529,12 @@ a {
 
 .user-card span {
   margin-left: 33%;
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 .home-card span {
   margin-left: 33%;
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 .indi-recipes {
@@ -552,12 +549,72 @@ a {
 }
 
 .no-recipes {
-height: 200px;
-display: flex;
-align-items: center;
+  height: 200px;
+  display: flex;
+  align-items: center;
 }
 
 .shopping-list-title {
   margin-left: 33%;
   text-decoration: underline;
+}
+
+.add-item-form {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  height: 60%;
+  border-radius: 6px;
+  width: 80%;
+  margin-top: 30px;
+  background-color: lightblue;
+  padding: 15px;
+}
+
+.add-item-form-input {
+  width: 70%;
+  text-align: center;
+  margin-top: 10px;
+  box-shadow: none;
+  margin-bottom: 8px;
+}
+
+.add-item-form-checkbox-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-item-form-checkbox-container input {
+  margin-top: 10px;
+}
+
+.shopping-list {
+  position: relative;
+}
+
+.show-shopping-list-btn {
+  position: absolute;
+  top: 21px;
+  left: 16px;
+  border-color: #87b6c5;
+  border-radius: 4px;
+}
+
+.show-shopping-list-btn:hover {
+  color: white;
+  background-color: #87b6c5;
+}
+
+.shopping-list-form-btn {
+  position: static;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.add-item-form-container {
+  display: flex;
+  justify-content: center
 }
