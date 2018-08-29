@@ -16,6 +16,7 @@ class HomeDashboard extends Component {
 
   render() {
     const homeRecipes = this.props.favourites.homeFavourites.recipes;
+    console.log(homeRecipes)
 
     return (
       <div className="home-card dashboard-card">
@@ -29,7 +30,7 @@ class HomeDashboard extends Component {
               </li>
               </Link>
             );
-          }) : <div>No recipes are currently saved to this account</div>
+          }) : <div className="no-recipes-on-dashboard" >No recipes are currently saved to this account</div>
           }
         </ul>
       </div>

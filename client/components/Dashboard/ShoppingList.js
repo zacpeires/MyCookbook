@@ -50,12 +50,24 @@ class ShoppingList extends Component {
   render() {
 
     const shoppingList = this.props.shoppingList
+    const itemsOnShoppingList = this.props.itemsOnShoppingList
 
     return (
       <div className="shopping-list dashboard-card">
       <div className="shopping-list-title">My shopping-list</div>
 
-      <button type='input' onClick={this.showForm} className="show-shopping-list-btn">Add item</button>
+      {/* <ul className="user-shopping-list">
+      { itemsOnShoppingList ?
+      shoppingList.allItems.map(item => {
+        return (
+          <li key={item.name}>{item.name}</li>
+        )
+      })
+      :  <div />
+      }
+      </ul> */}
+
+      <button type="submit" onClick={this.showForm} className="show-shopping-list-btn">Add item</button>
 
       <div className="add-item-form-container">
        { this.state.showForm ?
@@ -70,6 +82,7 @@ class ShoppingList extends Component {
 
 const mapStateToProps = (state) => ({
   shoppingList: state.shoppingList,
+  itemsOnShoppingList: !!state.shoppingList.allItems.length,
   user: state.user
 })
 

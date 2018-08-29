@@ -45,9 +45,6 @@ class Navbar extends Component {
           <Link to="/home">
             <span>Home</span>
           </Link>
-          <Link to={`/dashboard/${this.props.user.id}`}>
-            <span>Dashboard</span>
-          </Link>
           {!this.props.isLoggedIn ? (
             <Link to="/login" className="login-logout">
               <span>Login</span>
@@ -60,6 +57,9 @@ class Navbar extends Component {
                 onClick={() => this.props.logout()}
               >
                 <span className="login-logout">Logout</span>
+              </Link>
+              <Link to={`/dashboard/${this.props.user.id}`}>
+                <span>Dashboard</span>
               </Link>
               <span className="username">{this.props.user.name}</span>
             </div>
@@ -104,7 +104,9 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Navbar));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Navbar)
+);

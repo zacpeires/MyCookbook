@@ -24,7 +24,8 @@ class UserDashboard extends Component {
               </li>
               </Link >
             );
-          }) : <div>No recipes are currently saved to this account</div>
+          }) : <div className="no-recipes-on-dashboard
+          ">No recipes are currently saved to this account</div>
         }
         </ul>
       </div>

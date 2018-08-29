@@ -59,7 +59,7 @@ class HomePage extends Component {
               </Link>
             );
           })
-         : <div className="no-recipes">There are currently no Recipes listed. Add a recipe, or Scrape from the web</div>
+         : <div className="no-recipes">There are currently no recipes listed. Add a recipe, or scrape from the web</div>
           }
         </div>
       </div>

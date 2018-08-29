@@ -34,7 +34,7 @@ export const addedItem = (userId, item) => {
 }
 
 export default (state = defaultShoppingList, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case GET_SHOPPING_LIST:
       return {...state, allItems: action.list}
     case ADD_ITEM:
