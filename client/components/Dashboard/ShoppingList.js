@@ -20,7 +20,8 @@ class ShoppingList extends Component {
 
 
   componentDidMount() {
-    // this.props.gotShoppingList(this.props.userId)
+    this.props.gotShoppingList(this.props.userId)
+    // shoppingList reducer empties favourites and recipes
   }
 
   showForm() {
@@ -56,7 +57,7 @@ class ShoppingList extends Component {
       <div className="shopping-list dashboard-card">
       <div className="shopping-list-title">My shopping-list</div>
 
-      {/* <ul className="user-shopping-list">
+      <ul className="user-shopping-list">
       { itemsOnShoppingList ?
       shoppingList.allItems.map(item => {
         return (
@@ -65,7 +66,7 @@ class ShoppingList extends Component {
       })
       :  <div />
       }
-      </ul> */}
+      </ul>
 
       <button type="submit" onClick={this.showForm} className="show-shopping-list-btn">Add item</button>
 

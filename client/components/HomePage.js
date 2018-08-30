@@ -24,6 +24,8 @@ class HomePage extends Component {
 
 
   render() {
+    console.log()
+
     const recipes = this.props.recipe.allRecipes;
     const nineRandomRecipes = []
 

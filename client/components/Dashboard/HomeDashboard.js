@@ -16,7 +16,6 @@ class HomeDashboard extends Component {
 
   render() {
     const homeRecipes = this.props.favourites.homeFavourites.recipes;
-    console.log(homeRecipes)
 
     return (
       <div className="home-card dashboard-card">
